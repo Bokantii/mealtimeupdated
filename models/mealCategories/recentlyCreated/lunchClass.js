@@ -12,7 +12,7 @@ export const RECENTLY_CREATED_LUNCH = [
     7,
     ["grill", "mixing-bowl", "knife"],
     [
-      "Season the chicken thighs with salt, pepper, and your choice of Greek seasoning.",
+      "Season the chicken thighs with salt, pepper, and your choice of Greek seasoning (about 5 minutes of preparation).",
       "Preheat the grill to medium heat and cook the chicken for 6-8 minutes per side until fully cooked.",
       "While the chicken cooks, wash and slice the lettuce and tomatoes into thin strips.",
       "Once the chicken is done, let it rest for 5 minutes, then slice it into thin strips.",
@@ -60,7 +60,7 @@ export const RECENTLY_CREATED_LUNCH = [
     8,
     ["oven", "mixing-bowl", "baking-pan"],
     [
-      "Preheat the oven to 350°F (175°C).",
+      "Preheat the oven to 350°F (175°C) (about 10 minutes to reach temperature).",
       "Rub the ribs generously with salt, pepper, and your favorite BBQ seasoning.",
       "Coat the ribs with BBQ sauce and place them on a foil-lined baking pan.",
       "Cover the ribs with foil and bake for 1.5 hours, basting with more BBQ sauce every 30 minutes.",
@@ -113,7 +113,7 @@ export const RECENTLY_CREATED_LUNCH = [
       "Grill the chicken over medium heat for 5-7 minutes per side until fully cooked.",
       "Allow the grilled chicken to rest for 5 minutes, then slice into thin strips.",
       "Cut the avocado in half, remove the pit, and slice into thin wedges.",
-      "In a large bowl, combine the lettuce, pomegranate seeds, sliced avocado, and grilled chicken.",
+      "In a large bowl, combine the lettuce, pomegranate seeds, sliced avocado, and grilled chicken (about 5 minutes to assemble everything).",
       "Drizzle with olive oil, toss gently, and serve immediately."
     ],
     false,
@@ -153,7 +153,7 @@ export const RECENTLY_CREATED_LUNCH = [
     7,
     ["pot", "grill", "mixing-bowl"],
     [
-      "Bring a pot of salted water to a boil and cook the pasta according to the package instructions. Drain and let cool.",
+      "Bring a pot of salted water to a boil and cook the pasta according to the package instructions (about 8-10 minutes). Drain and let cool.",
       "Meanwhile, peel and devein the shrimp if necessary.",
       "Drizzle the shrimp with olive oil and season with salt, pepper, and a dash of garlic powder.",
       "Grill the shrimp over medium heat for 2-3 minutes per side until pink and opaque.",

@@ -13,7 +13,7 @@ export const RECENTLY_CREATED_BREAKFAST = [
     ["stovetop", "pot", "spoon"],
     [
       "Heat the butter in a large pot over medium heat until melted.",
-      "Add the popcorn kernels and cover the pot with a lid. Shake the pot occasionally to prevent burning.",
+      "Add the popcorn kernels and cover the pot with a lid. Shake the pot occasionally to prevent burning (about 5-7 minutes total cooking time).",
       "Once the popping slows, remove from heat and season with salt. Serve immediately."
     ],
     false,
@@ -48,7 +48,7 @@ export const RECENTLY_CREATED_BREAKFAST = [
     5,
     ["mixing-bowl", "baking-dish", "oven"],
     [
-      "Preheat the oven to 375°F (190°C).",
+      "Preheat the oven to 375°F (190°C) (about 10 minutes to reach temperature).",
       "Peel and slice apples, then mix with sugar and cinnamon.",
       "Prepare the crumble topping by mixing flour, sugar, and butter until crumbly.",
       "Place the apple mixture in a baking dish and top with the crumble.",
@@ -105,7 +105,7 @@ export const RECENTLY_CREATED_BREAKFAST = [
       "Combine wet ingredients in another bowl.",
       "Fold blueberries into the batter.",
       "Spoon batter into muffin tins.",
-      "Bake for 20-25 minutes or until golden."
+      "Bake for 20-25 minutes or until golden (allow 5 minutes to cool before removing from tin)."
     ],
     false,
     "Breakfast",
@@ -144,7 +144,7 @@ export const RECENTLY_CREATED_BREAKFAST = [
     ["knife", "pan", "fryer"],
     [
       "Toast the slices of bread in a toaster or pan until golden brown.",
-      "Heat a pan over medium heat and cook the chicken until fully cooked through. Slice into strips.",
+      "Heat a pan over medium heat and cook the chicken until fully cooked through (about 6-8 minutes). Slice into strips.",
       "Wash and slice the tomato into thin rounds.",
       "Layer the sandwich by placing lettuce, sliced tomatoes, and chicken between the toasted bread slices.",
       "Secure the sandwich with toothpicks and cut into halves or quarters.",
@@ -195,7 +195,7 @@ export const RECENTLY_CREATED_BREAKFAST = [
       "Coat the chicken with the marinade and let it sit for at least 20 minutes.",
       "Preheat a grill pan over medium heat for 5 minutes.",
       "Place the chicken on the grill and cook for 6-8 minutes per side.",
-      "While the chicken cooks, wash and chop the vegetables into bite-sized pieces.",
+      "While the chicken cooks, wash and chop the vegetables into bite-sized pieces (about 5 minutes preparation time).",
       "Lightly coat the vegetables with olive oil and season with salt and pepper.",
       "Grill the vegetables for 3-5 minutes until slightly charred but still crisp.",
       "Remove the chicken from the grill and let it rest for 5 minutes before slicing.",
@@ -237,7 +237,7 @@ export const RECENTLY_CREATED_BREAKFAST = [
     4,
     ["saucepan", "mixing-bowl", "refrigerator"],
     [
-      "Heat heavy cream and sugar in a saucepan until sugar dissolves.",
+      "Heat heavy cream and sugar in a saucepan until sugar dissolves (about 5-7 minutes over medium heat).",
       "Add vanilla extract and gelatin dissolved in water.",
       "Pour mixture into molds and refrigerate for at least 4 hours.",
       "Serve with your favorite fruit topping."
@@ -279,7 +279,7 @@ export const RECENTLY_CREATED_BREAKFAST = [
     3,
     ["knife", "bowl"],
     [
-      "Wash and peel the carrots and cucumbers. Slice them into sticks.",
+      "Wash and peel the carrots and cucumbers. Slice them into sticks (about 5 minutes total preparation time).",
       "Arrange the veggie sticks neatly on a plate.",
       "Serve with hummus in a small bowl for dipping."
     ],

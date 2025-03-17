@@ -13,7 +13,7 @@ export const MOST_POPULAR_LUNCH = [
     ["knife", "pan", "fryer"],
     [
       "Toast the slices of bread in a toaster or pan until golden brown.",
-      "Heat a pan over medium heat and cook the chicken until fully cooked through. Slice into strips.",
+      "Heat a pan over medium heat and cook the chicken until fully cooked through (about 8 minutes). Slice into strips.",
       "Wash and slice the tomato into thin rounds.",
       "Layer the sandwich by placing lettuce, sliced tomatoes, and chicken between the toasted bread slices.",
       "Secure the sandwich with toothpicks and cut into halves or quarters.",
@@ -57,7 +57,7 @@ export const MOST_POPULAR_LUNCH = [
     3,
     ["bowl", "knife"],
     [
-      "Wash the lettuce thoroughly and chop into bite-sized pieces.",
+      "Wash the lettuce thoroughly and chop into bite-sized pieces (about 5 minutes).",
       "Place the lettuce in a large bowl.",
       "Drizzle Caesar dressing over the lettuce and toss gently to coat evenly.",
       "Add the croutons and freshly grated Parmesan cheese on top.",
@@ -101,7 +101,7 @@ export const MOST_POPULAR_LUNCH = [
       "Mash the avocado with a fork and spread evenly over the tortilla.",
       "Layer turkey slices on top of the avocado spread.",
       "Wash and pat dry the lettuce, then place it over the turkey slices.",
-      "Tightly roll the tortilla into a wrap, ensuring it stays firm.",
+      "Tightly roll the tortilla into a wrap, ensuring it stays firm (about 5 minutes total preparation time).",
       "Slice in half diagonally and serve fresh."
     ],
     false,
@@ -141,7 +141,7 @@ export const MOST_POPULAR_LUNCH = [
       "Season the chicken with salt, pepper, and a bit of olive oil.",
       "Heat a grill pan over medium heat and grill the chicken for 5-7 minutes per side until fully cooked.",
       "Remove from heat and let rest before slicing into strips.",
-      "Wash and chop the lettuce, tomatoes, and cucumber into bite-sized pieces.",
+      "Wash and chop the lettuce, tomatoes, and cucumber into bite-sized pieces (about 5 minutes).",
       "Combine the chopped vegetables in a large bowl.",
       "Top with the grilled chicken slices.",
       "Drizzle vinaigrette over the salad and toss gently before serving."
@@ -182,7 +182,7 @@ export const MOST_POPULAR_LUNCH = [
     3,
     ["pan", "knife"],
     [
-      "Heat a pan over medium heat and cook the bacon strips until crispy.",
+      "Heat a pan over medium heat and cook the bacon strips until crispy (about 5-6 minutes).",
       "Remove the bacon and place it on a paper towel to drain excess grease.",
       "Toast the bread slices lightly until golden brown.",
       "Spread mayonnaise evenly over one side of each slice of bread.",
@@ -228,7 +228,7 @@ export const MOST_POPULAR_LUNCH = [
       "Layer mozzarella, tomato, and fresh basil leaves between the bread slices.",
       "Brush the outer sides of the bread with olive oil.",
       "Preheat the panini press or grill to medium heat.",
-      "Place the sandwich in the press and grill until the bread is crispy and the mozzarella is melted.",
+      "Place the sandwich in the press and grill until the bread is crispy and the mozzarella is melted (about 5-7 minutes).",
       "Slice in half and serve warm."
     ],
     true,

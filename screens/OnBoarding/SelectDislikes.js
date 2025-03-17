@@ -7,7 +7,7 @@ import {
   import React, { useState } from "react";
   import { Colors } from "../../util/Colors";
   import NewUserSelections from "../../components/ui/NewUserSelections";
-  
+ 
   const SelectDislikes = ({ navigation }) => {
     const options = [
       "Beets",
@@ -20,9 +20,11 @@ import {
       "Tofu",
       "Turnips",
     ];
-  
+ 
     const [selected, setSelected] = useState([]);
-  
+    const submitHandler=()=>{
+      navigation.navigate('SelectServings')
+    }
     const toggleSelection = (item) => {
       setSelected((prevSelected) =>
         prevSelected.includes(item)
@@ -32,7 +34,7 @@ import {
     };
   
     return (
-      <NewUserSelections headingText="How about dislikes?" action="Continue">
+      <NewUserSelections headingText="How about dislikes?" action="Continue" navigate={submitHandler}>
         <View style={styles.gridContainer}>
           {options.map((item, index) => (
             <TouchableOpacity

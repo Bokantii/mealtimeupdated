@@ -12,7 +12,7 @@ export const RECENTLY_CREATED_DESSERTS = [
     5,
     ["mixing-bowl", "baking-dish", "oven"],
     [
-      "Preheat the oven to 375°F (190°C).",
+      "Preheat the oven to 375°F (190°C) (about 10 minutes to reach temperature).",
       "Peel and slice apples, then mix with sugar and cinnamon.",
       "Prepare the crumble topping by mixing flour, sugar, and butter until crumbly.",
       "Place the apple mixture in a baking dish and top with the crumble.",
@@ -56,7 +56,7 @@ export const RECENTLY_CREATED_DESSERTS = [
     ["mixing-bowl", "baking-sheet", "oven"],
     [
       "Preheat the oven to 350°F (175°C).",
-      "Prepare biscuits using flour, sugar, and butter.",
+      "Prepare biscuits using flour, sugar, and butter (about 10 minutes of mixing and shaping).",
       "Bake biscuits for 15 minutes or until golden brown.",
       "Slice strawberries and mix with sugar to macerate.",
       "Assemble by layering biscuits, strawberries, and whipped cream."
@@ -99,7 +99,7 @@ export const RECENTLY_CREATED_DESSERTS = [
     4,
     ["saucepan", "mixing-bowl", "refrigerator"],
     [
-      "Heat heavy cream and sugar in a saucepan until sugar dissolves.",
+      "Heat heavy cream and sugar in a saucepan until sugar dissolves (about 5-7 minutes over medium-low heat).",
       "Add vanilla extract and gelatin dissolved in water.",
       "Pour mixture into molds and refrigerate for at least 4 hours.",
       "Serve with your favorite fruit topping."

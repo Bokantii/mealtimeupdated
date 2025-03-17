@@ -13,7 +13,7 @@ export const RECENTLY_CREATED_SNACKS = [
     ["pot", "mixing-bowl", "oven"],
     [
       "Boil the cabbage leaves in salted water until soft, about 5-7 minutes. Drain and let cool.",
-      "In a mixing bowl, combine ground beef, rice, finely chopped onion, and minced garlic.",
+      "In a mixing bowl, combine ground beef, rice, finely chopped onion, and minced garlic (about 10 minutes of preparation time).",
       "Place a portion of the meat mixture on each cabbage leaf and roll tightly, tucking in the sides.",
       "Arrange the rolls in a baking dish and pour tomato sauce over them.",
       "Cover with foil and bake at 350°F (175°C) for 45 minutes. Remove foil and bake for an additional 10 minutes."
@@ -64,7 +64,7 @@ export const RECENTLY_CREATED_SNACKS = [
     6,
     ["baking-dish", "oven", "mixing-bowl"],
     [
-      "Preheat oven to 375°F (190°C).",
+      "Preheat oven to 375°F (190°C) (about 10 minutes to reach temperature).",
       "In a baking dish, spread a thin layer of marinara sauce.",
       "Layer lasagna noodles, ricotta cheese, spinach, zucchini slices, and marinara sauce.",
       "Repeat the layering process, finishing with a layer of marinara sauce on top.",
@@ -110,7 +110,7 @@ export const RECENTLY_CREATED_SNACKS = [
     5,
     ["pot", "stirring-spoon", "knife"],
     [
-      "Heat a pot over medium heat and sauté finely chopped onion and minced garlic until fragrant.",
+      "Heat a pot over medium heat and sauté finely chopped onion and minced garlic until fragrant (about 5 minutes).",
       "Add lentils, vegetable broth, and cumin. Stir well and bring to a boil.",
       "Lower the heat and let simmer for 25 minutes, stirring occasionally.",
       "Add spinach to the pot and cook for another 5 minutes until wilted.",

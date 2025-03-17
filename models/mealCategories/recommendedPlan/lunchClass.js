@@ -13,7 +13,7 @@ export const LUNCH_OPTIONS = [
     ["knife", "toaster"],
     [
       "Toast the bread slices in a toaster or on a pan until golden brown and crisp.",
-      "While the bread toasts, cook the bacon in a pan over medium heat until crispy. Drain excess grease on a paper towel.",
+      "While the bread toasts, cook the bacon in a pan over medium heat until crispy (about 5-7 minutes). Drain excess grease on a paper towel.",
       "Spread mayonnaise evenly on one side of each bread slice.",
       "Slice the avocado in half, remove the pit, and cut into thin slices.",
       "Layer turkey, avocado slices, crispy bacon, lettuce, and tomato between the toasted bread slices.",
@@ -52,7 +52,7 @@ export const LUNCH_OPTIONS = [
     6,
     ["panini press", "knife"],
     [
-      "Preheat the panini press to medium-high heat.",
+      "Preheat the panini press to medium-high heat (about 5 minutes).",
       "Slice zucchini, bell peppers, and eggplant into thin strips.",
       "Grill the vegetables in the panini press or a grill pan until tender and slightly charred.",
       "Assemble the panini by layering mozzarella and grilled vegetables between the bread slices.",
@@ -93,7 +93,7 @@ export const LUNCH_OPTIONS = [
     6,
     ["skillet", "knife"],
     [
-      "Pat the shrimp dry and season with salt, pepper, and your preferred spices.",
+      "Pat the shrimp dry and season with salt, pepper, and your preferred spices (about 5 minutes for preparation).",
       "Heat a skillet over medium heat and sauté shrimp for 3-4 minutes until pink and fully cooked.",
       "In a bowl, mix shredded cabbage with fresh lime juice for a zesty slaw.",
       "Warm the taco shells in a dry pan or oven until soft.",
@@ -134,7 +134,7 @@ export const LUNCH_OPTIONS = [
     ["pot", "knife"],
     [
       "Rinse the lentils under cold water and drain.",
-      "In a large pot, heat oil over medium heat and sauté diced onions, carrots, and celery until softened.",
+      "In a large pot, heat oil over medium heat and sauté diced onions, carrots, and celery until softened (about 5-7 minutes).",
       "Add minced garlic and cook for another minute until fragrant.",
       "Pour in canned tomatoes, lentils, and enough water to cover everything. Bring to a boil.",
       "Reduce heat to low, cover, and simmer for 20 minutes or until the lentils are tender.",
@@ -178,7 +178,7 @@ export const LUNCH_OPTIONS = [
     6,
     ["knife", "mixing bowl"],
     [
-      "Cook quinoa according to package instructions and allow it to cool completely.",
+      "Cook quinoa according to package instructions and allow it to cool completely (about 15-20 minutes cooking time plus cooling).",
       "Halve the cherry tomatoes and dice the cucumbers into small pieces.",
       "Slice olives into thin rounds and crumble the feta cheese.",
       "In a mixing bowl, combine the quinoa, tomatoes, cucumbers, olives, and feta.",

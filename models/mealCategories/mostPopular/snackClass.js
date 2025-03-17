@@ -13,7 +13,7 @@ export const MOST_POPULAR_SNACKS = [
     ["stovetop", "pot", "spoon"],
     [
       "Heat the butter in a large pot over medium heat until melted.",
-      "Add the popcorn kernels and cover the pot with a lid. Shake the pot occasionally to prevent burning.",
+      "Add the popcorn kernels and cover the pot with a lid. Shake the pot occasionally to prevent burning (about 5 minutes until popping slows down).",
       "Once the popping slows, remove from heat and season with salt. Serve immediately."
     ],
     false,
@@ -48,7 +48,7 @@ export const MOST_POPULAR_SNACKS = [
     3,
     ["microwave", "bowl"],
     [
-      "Place the cheese and milk in a microwave-safe bowl and microwave for 30-second intervals, stirring in between until smooth.",
+      "Place the cheese and milk in a microwave-safe bowl and microwave for 30-second intervals, stirring in between until smooth (about 5 minutes total preparation and melting time).",
       "Slice the jalapenos thinly and mix them into the cheese dip.",
       "Serve the cheese dip warm alongside tortilla chips for dipping."
     ],
@@ -86,7 +86,7 @@ export const MOST_POPULAR_SNACKS = [
     4,
     ["mixing-bowl", "oven", "spoon"],
     [
-      "Preheat the oven to 350°F (175°C).",
+      "Preheat the oven to 350°F (175°C) (about 5 minutes to reach temperature).",
       "In a mixing bowl, cream together the butter and sugar until light and fluffy. Add the egg and mix well.",
       "Gradually stir in the flour and chocolate chips. Drop spoonfuls of the dough onto a baking tray.",
       "Bake for 10-12 minutes until golden. Let cool before serving."
@@ -127,7 +127,7 @@ export const MOST_POPULAR_SNACKS = [
     ["bowl", "spoon"],
     [
       "Combine the nuts, dried fruits, seeds, and chocolate chips in a large bowl.",
-      "Mix thoroughly to distribute all the ingredients evenly.",
+      "Mix thoroughly to distribute all the ingredients evenly (about 5 minutes to ensure proper mixing).",
       "Store in an airtight container for a quick and healthy snack."
     ],
     false,
@@ -163,7 +163,7 @@ export const MOST_POPULAR_SNACKS = [
     3,
     ["knife", "bowl"],
     [
-      "Wash and peel the carrots and cucumbers. Slice them into sticks.",
+      "Wash and peel the carrots and cucumbers. Slice them into sticks (about 5-7 minutes for preparation).",
       "Arrange the veggie sticks neatly on a plate.",
       "Serve with hummus in a small bowl for dipping."
     ],

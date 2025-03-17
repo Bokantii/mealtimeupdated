@@ -4,14 +4,13 @@ import {
   TouchableOpacity,
   StyleSheet,
   Pressable,
-
 } from "react-native";
 import React from "react";
 import { Colors } from "../../util/Colors";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { useNavigation } from "@react-navigation/native";
-const NewUserSelections = ({  children, action, headingText }) => {
-    const navigation=useNavigation()
+const NewUserSelections = ({ children, action, headingText, navigate }) => {
+  const navigation = useNavigation();
   function goBack() {
     navigation.goBack();
   }
@@ -24,6 +23,7 @@ const NewUserSelections = ({  children, action, headingText }) => {
       {children}
       <TouchableOpacity>
         <Text
+          onPress={navigate}
           style={{
             textAlign: "center",
             fontSize: 18,
@@ -31,9 +31,9 @@ const NewUserSelections = ({  children, action, headingText }) => {
             borderRadius: 15,
             fontWeight: "bold",
             backgroundColor: Colors.mealTimePrimary,
-            width:"100%",
-            position:"absolute",
-            bottom:-200
+            width: "100%",
+            position: "absolute",
+            bottom: -200,
           }}
         >
           {action}

@@ -12,7 +12,7 @@ export const MOST_POPULAR_DESSERTS = [
     5,
     ["oven", "mixing-bowl", "cake-pan"],
     [
-      "Preheat your oven to 350°F (175°C) and grease a cake pan.",
+      "Preheat your oven to 350°F (175°C) and grease a cake pan (about 5 minutes).",
       "In a mixing bowl, combine flour, cocoa powder, and sugar. In another bowl, whisk together melted butter and eggs.",
       "Gradually add the wet ingredients to the dry ingredients, mixing until smooth.",
       "Pour the batter into the prepared cake pan and bake for 40-50 minutes or until a toothpick inserted into the center comes out clean.",
@@ -37,7 +37,7 @@ export const MOST_POPULAR_DESSERTS = [
     ["mixing-bowl", "whisk", "serving-dish"],
     [
       "Brew a cup of strong coffee and let it cool. Dip the ladyfingers into the coffee, making sure they are moist but not soggy.",
-      "In a mixing bowl, whisk together mascarpone cheese and sugar until smooth.",
+      "In a mixing bowl, whisk together mascarpone cheese and sugar until smooth (about 5 minutes to achieve the right consistency).",
       "Layer the coffee-soaked ladyfingers at the bottom of a serving dish, spread a layer of the mascarpone mixture on top, and repeat the layers.",
       "Dust the top with cocoa powder and refrigerate for at least 2 hours before serving.",
     ],
@@ -59,7 +59,7 @@ export const MOST_POPULAR_DESSERTS = [
     4,
     ["oven", "rolling-pin", "pie-dish"],
     [
-      "Preheat your oven to 375°F (190°C). Peel and slice the apples, then toss them with sugar and cinnamon in a mixing bowl.",
+      "Preheat your oven to 375°F (190°C). Peel and slice the apples, then toss them with sugar and cinnamon in a mixing bowl (about 15 minutes of preparation time).",
       "Prepare the pie crust by rolling out the dough and fitting it into a pie dish. Add the apple filling and cover with another layer of dough, crimping the edges to seal.",
       "Cut small slits in the top crust to allow steam to escape. Bake in the oven for 45-50 minutes or until the crust is golden brown.",
       "Let the pie cool slightly before slicing and serving.",
@@ -84,7 +84,7 @@ export const MOST_POPULAR_DESSERTS = [
     [
       "Preheat your oven to 325°F (160°C). Crush graham crackers into fine crumbs and mix with melted butter to form the crust.",
       "Press the crust mixture into the bottom of a springform pan and bake for 10 minutes. Let it cool.",
-      "In a mixing bowl, beat cream cheese, sugar, and eggs until smooth. Pour the mixture over the crust.",
+      "In a mixing bowl, beat cream cheese, sugar, and eggs until smooth (about 8 minutes with an electric mixer). Pour the mixture over the crust.",
       "Bake for 50-60 minutes until the center is set. Cool completely, then refrigerate for at least 4 hours before serving.",
     ],
     true,
@@ -105,7 +105,7 @@ export const MOST_POPULAR_DESSERTS = [
     4,
     ["saucepan", "molds", "spoon"],
     [
-      "In a saucepan, heat the cream, sugar, and vanilla over medium heat, stirring occasionally until the sugar dissolves. Do not let it boil.",
+      "In a saucepan, heat the cream, sugar, and vanilla over medium heat, stirring occasionally until the sugar dissolves (about 5 minutes). Do not let it boil.",
       "Dissolve the gelatin in a small amount of cold water and add it to the cream mixture, stirring until fully dissolved.",
       "Pour the mixture into molds and refrigerate for at least 4 hours until set.",
       "Serve chilled, optionally topped with fruit or sauce.",
@@ -129,7 +129,7 @@ export const MOST_POPULAR_DESSERTS = [
     ["mixing-bowl", "spoon", "pie-dish"],
     [
       "Crush the graham crackers into crumbs and mix with melted butter to form the crust. Press into a pie dish and refrigerate for 10 minutes.",
-      "Slice the bananas and layer them on the crust. Spread the caramel over the bananas.",
+      "Slice the bananas and layer them on the crust. Spread the caramel over the bananas (about 5 minutes to create even layers).",
       "Top with whipped cream and refrigerate for at least 1 hour before serving.",
     ],
     false,

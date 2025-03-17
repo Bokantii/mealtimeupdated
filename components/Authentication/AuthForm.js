@@ -5,6 +5,7 @@ import { useState } from "react";
 import FlatButton from "../ui/FlatButton";
 import CheckBox from "@react-native-community/checkbox";
 import { Image } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 const AuthForm = ({ isLogin, credentialIsInvalid, onSubmit }) => {
   const [enteredName, setEnteredName] = useState("");
@@ -13,7 +14,7 @@ const AuthForm = ({ isLogin, credentialIsInvalid, onSubmit }) => {
   const [enteredConfirmEmail, setConfirmEmail] = useState("");
   const [enteredConfirmPassword, setEnteredConfirmPassword] = useState("");
   const [checkBoxIschecked, setCheckboxIsChecked] = useState(false);
-
+  const navigation = useNavigation();
   const {
     email: emailIsInvalid,
     password: passwordIsInvalid,
@@ -58,6 +59,9 @@ const AuthForm = ({ isLogin, credentialIsInvalid, onSubmit }) => {
       confirmPassword: enteredConfirmPassword,
       confirmEmail: enteredConfirmEmail,
     });
+    if (!isLogin) {
+      navigation.navigate("SelectDiet");
+    }
   }
   return (
     <View style={styles.form}>
@@ -140,16 +144,16 @@ const styles = StyleSheet.create({
     padding: 16,
     Width: "100%",
   },
- header:{
-  flexDirection:'row',
-  justifyContent:"space-between",
-  alignItems:'center'
- },
+  header: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
   authTitle: {
     fontSize: 30,
     fontWeight: "bold",
     marginBottom: 8,
-    marginRight:"30%"
+    marginRight: "30%",
   },
   buttons: {
     marginTop: 12,

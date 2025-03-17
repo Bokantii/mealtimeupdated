@@ -2,7 +2,8 @@ import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import React, { useState } from "react";
 import NewUserSelections from "../../components/ui/NewUserSelections";
 import { Colors } from "../../util/Colors";
-const SelectDiet = () => {
+
+const SelectDiet = ({navigation}) => {
   const options = [
     "Classic",
     "Low Carb",
@@ -14,7 +15,6 @@ const SelectDiet = () => {
     "Vegan",
     
   ];
-
   const [selected, setSelected] = useState([]);
 
   const toggleSelection = (item) => {
@@ -25,8 +25,11 @@ const SelectDiet = () => {
     );
   };
 
+  const submitHandler=()=>{
+    navigation.navigate('SelectDislikes')
+  }
   return (
-    <NewUserSelections action="Continue" headingText="Pick your diet">
+    <NewUserSelections action="Continue" headingText="Pick your diet" navigate={submitHandler}>
       <View style={styles.gridContainer}>
         {options.map((item, index) => (
           <TouchableOpacity

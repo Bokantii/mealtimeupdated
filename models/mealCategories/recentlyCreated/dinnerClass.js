@@ -12,7 +12,7 @@ export const RECENTLY_CREATED_DINNER = [
     7,
     ["mixing-bowl", "baking-dish", "oven", "pan", "knife"],
     [
-      "Preheat your oven to 375°F (190°C). Lightly grease a baking dish.",
+      "Preheat your oven to 375°F (190°C) (about 10 minutes to reach temperature). Lightly grease a baking dish.",
       "Finely chop the spinach and mince the garlic.",
       "In a mixing bowl, combine the spinach, crumbled feta cheese, and minced garlic. Mix well.",
       "Using a sharp knife, carefully cut a pocket into the side of each chicken breast without cutting all the way through.",
@@ -61,7 +61,7 @@ export const RECENTLY_CREATED_DINNER = [
       "Preheat your oven to 375°F (190°C). Lightly grease a loaf pan.",
       "Finely chop the spinach.",
       "In a large mixing bowl, combine the ground turkey, chopped spinach, breadcrumbs, egg, and half of the ketchup.",
-      "Mix the ingredients thoroughly until well combined.",
+      "Mix the ingredients thoroughly until well combined (about 5 minutes of mixing to ensure even distribution).",
       "Transfer the mixture to the loaf pan, pressing it down evenly.",
       "Spread the remaining ketchup over the top for a flavorful glaze.",
       "Bake for 50-60 minutes until the meatloaf is fully cooked and reaches an internal temperature of 165°F (75°C). Let it rest for 5 minutes before slicing and serving."
@@ -105,7 +105,7 @@ export const RECENTLY_CREATED_DINNER = [
     8,
     ["saucepan", "pot", "mixing-spoon", "knife"],
     [
-      "Rinse the rice under cold water and cook in a pot according to package instructions. Set aside.",
+      "Rinse the rice under cold water and cook in a pot according to package instructions (about 15-20 minutes). Set aside.",
       "Chop the mixed vegetables into bite-sized pieces and mince the garlic.",
       "Heat 1 tablespoon of oil in a saucepan over medium heat.",
       "Add the minced garlic and sauté until fragrant, about 1 minute.",

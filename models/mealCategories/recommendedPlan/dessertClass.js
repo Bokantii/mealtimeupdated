@@ -12,7 +12,7 @@ export const RECOMMENDED_DESSERTS = [
     10,
     ["mixing-bowl", "ramekins", "blowtorch"],
     [
-      "Preheat the oven to 325°F (160°C).",
+      "Preheat the oven to 325°F (160°C) (about 10 minutes to reach temperature).",
       "Heat cream in a saucepan over medium heat until just before boiling. Remove from heat.",
       "In a mixing bowl, whisk egg yolks and sugar until pale and creamy.",
       "Slowly add the warm cream to the egg mixture, stirring constantly to combine.",
@@ -60,7 +60,7 @@ export const RECOMMENDED_DESSERTS = [
     6,
     ["mixing-bowl", "spatula"],
     [
-      "Prepare the graham cracker crust if not pre-made and let it set.",
+      "Prepare the graham cracker crust if not pre-made and let it set (about 15 minutes if making from scratch).",
       "Spread a layer of caramel evenly over the crust.",
       "Slice bananas and layer them over the caramel.",
       "Top with whipped cream, spreading it evenly.",
@@ -104,7 +104,7 @@ export const RECOMMENDED_DESSERTS = [
     ["mixing-bowl", "oven"],
     [
       "Preheat oven to 375°F (190°C).",
-      "Melt chocolate and butter together in a heatproof bowl over simmering water or in the microwave. Stir until smooth.",
+      "Melt chocolate and butter together in a heatproof bowl over simmering water or in the microwave (about 5-7 minutes for the double boiler method). Stir until smooth.",
       "In a separate bowl, whisk eggs and sugar until pale and fluffy.",
       "Gently fold the melted chocolate mixture into the eggs.",
       "Sift in flour and mix until smooth.",

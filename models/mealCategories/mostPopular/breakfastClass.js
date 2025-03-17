@@ -14,7 +14,7 @@ export const MOST_POPULAR_BREAKFAST = [
     [
       "In a large mixing bowl, combine the pancake mix with water (follow the package instructions for the correct ratio) and whisk until the batter is smooth.",
       "Heat a non-stick pan over medium heat and lightly grease with butter.",
-      "Pour a ladleful of the batter onto the pan and cook until bubbles form on the surface. Flip and cook the other side for another 2 minutes.",
+      "Pour a ladleful of the batter onto the pan and cook until bubbles form on the surface (about 5 minutes). Flip and cook the other side for another 2 minutes.",
       "Serve warm with maple syrup drizzled on top.",
     ],
     false,
@@ -22,7 +22,8 @@ export const MOST_POPULAR_BREAKFAST = [
     "Fluffy pancakes with rich maple syrup.",
     ["Sweet", "Quick", "Comfort Food"],
     { calories: 350, protein: "8g", carbs: "60g", fat: "10g" }, // Nutrition Facts
-    ["Pancake mix", "Maple syrup", "Butter"] // Grocery List
+    ["Pancake mix", "Maple syrup", "Butter"], // Grocery List
+    ["2 minutes", "2 minutes", "7 minutes", "1 minute"] // Duration Array
   ),
   new Meal(
     "2",
@@ -36,7 +37,7 @@ export const MOST_POPULAR_BREAKFAST = [
     ["waffle-maker", "frying-pan"],
     [
       "Preheat your waffle maker. Prepare the waffle batter according to the package instructions and set aside.",
-      "Heat a frying pan with enough oil to shallow-fry the chicken. Season the chicken with salt, pepper, and optional spices, then fry until golden brown and cooked through.",
+      "Heat a frying pan with enough oil to shallow-fry the chicken. Season the chicken with salt, pepper, and optional spices, then fry until golden brown and cooked through (about 8 minutes per side).",
       "Pour the waffle batter into the waffle maker and cook until golden and crisp.",
       "Serve the fried chicken on top of the waffles and drizzle with maple syrup.",
     ],
@@ -45,7 +46,8 @@ export const MOST_POPULAR_BREAKFAST = [
     "Crispy fried chicken served on golden waffles.",
     ["Sweet", "Savory", "American"],
     { calories: 700, protein: "40g", carbs: "75g", fat: "30g" },
-    ["Chicken", "Waffle batter", "Maple syrup", "Oil"]
+    ["Chicken", "Waffle batter", "Maple syrup", "Oil"],
+    ["5 minutes", "16 minutes", "5 minutes", "1 minute"]
   ),
   new Meal(
     "3",
@@ -59,7 +61,7 @@ export const MOST_POPULAR_BREAKFAST = [
     ["pan", "whisk", "knife"],
     [
       "Crack the eggs into a bowl, add a pinch of salt and pepper, and whisk until fully mixed.",
-      "Slice the mushrooms and sauté them in a non-stick pan over medium heat until tender.",
+      "Slice the mushrooms and sauté them in a non-stick pan over medium heat until tender (about 5 minutes).",
       "Pour the whisked eggs over the mushrooms and sprinkle spinach and grated cheese on top.",
       "Cook until the omelette is set, then fold in half and serve immediately.",
     ],
@@ -68,7 +70,8 @@ export const MOST_POPULAR_BREAKFAST = [
     "Healthy omelette loaded with fresh vegetables.",
     ["Vegetarian", "Quick", "Protein"],
     { calories: 250, protein: "20g", carbs: "5g", fat: "18g" },
-    ["Eggs", "Mushrooms", "Cheese", "Spinach"]
+    ["Eggs", "Mushrooms", "Cheese", "Spinach"],
+    ["2 minutes", "5 minutes", "1 minute", "3 minutes"]
   ),
   new Meal(
     "4",
@@ -84,14 +87,15 @@ export const MOST_POPULAR_BREAKFAST = [
       "Toast the bread slices in a toaster until golden brown.",
       "Slice the avocado in half, remove the pit, and mash the flesh in a bowl with a squeeze of lemon juice.",
       "Bring a pot of water to a gentle simmer, crack an egg into a small cup, and carefully slide it into the water. Cook for 3-4 minutes until the whites are set.",
-      "Spread the mashed avocado onto the toasted bread, top with the poached egg, and serve immediately.",
+      "Spread the mashed avocado onto the toasted bread, top with the poached egg, and season with salt and pepper to taste (about 5 minutes total preparation time).",
     ],
     false,
     "Breakfast",
     "Creamy avocado on toast topped with a perfectly poached egg.",
     ["Healthy", "Quick", "Trendy"],
     { calories: 300, protein: "12g", carbs: "30g", fat: "18g" },
-    ["Bread", "Avocado", "Egg", "Lemon"]
+    ["Bread", "Avocado", "Egg", "Lemon"],
+    ["2 minutes", "2 minutes", "3 minutes", "1 minute"]
   ),
   new Meal(
     "5",
@@ -104,7 +108,7 @@ export const MOST_POPULAR_BREAKFAST = [
     3,
     ["pan", "toaster"],
     [
-      "Toast the bagel slices in a toaster until golden brown.",
+      "Toast the bagel slices in a toaster until golden brown (about 5 minutes).",
       "Cook an egg in a frying pan to your desired consistency (fried or scrambled).",
       "Assemble the sandwich by layering the egg and cheese on the toasted bagel.",
       "Serve warm.",
@@ -114,7 +118,8 @@ export const MOST_POPULAR_BREAKFAST = [
     "Hearty bagel sandwich with egg and melted cheese.",
     ["Quick", "Savory", "Comfort Food"],
     { calories: 400, protein: "20g", carbs: "45g", fat: "15g" },
-    ["Bagel", "Egg", "Cheese"]
+    ["Bagel", "Egg", "Cheese"],
+    ["5 minutes", "3 minutes", "1 minute", "1 minute"]
   ),
   new Meal(
     "6",
@@ -127,7 +132,7 @@ export const MOST_POPULAR_BREAKFAST = [
     3,
     ["knife", "toaster"],
     [
-      "Toast the rye bread slices until golden brown.",
+      "Toast the rye bread slices until golden brown (about 5 minutes).",
       "Spread cream cheese evenly on each slice of bread.",
       "Top with smoked salmon and serve immediately.",
     ],
@@ -136,6 +141,7 @@ export const MOST_POPULAR_BREAKFAST = [
     "Elegant smoked salmon served on rye bread.",
     ["Savory", "Quick", "Protein"],
     { calories: 320, protein: "22g", carbs: "35g", fat: "12g" },
-    ["Rye bread", "Smoked salmon", "Cream cheese"]
+    ["Rye bread", "Smoked salmon", "Cream cheese"],
+    ["5 minutes", "1 minute", "1 minute"]
   ),
 ];

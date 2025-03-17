@@ -17,7 +17,7 @@ export const MOST_POPULAR_DINNER = [
       "Coat the chicken with the marinade and let it sit for at least 20 minutes.",
       "Preheat a grill pan over medium heat for 5 minutes.",
       "Place the chicken on the grill and cook for 6-8 minutes per side.",
-      "While the chicken cooks, wash and chop the vegetables into bite-sized pieces.",
+      "While the chicken cooks, wash and chop the vegetables into bite-sized pieces (about 5 minutes).",
       "Lightly coat the vegetables with olive oil and season with salt and pepper.",
       "Grill the vegetables for 3-5 minutes until slightly charred but still crisp.",
       "Remove the chicken from the grill and let it rest for 5 minutes before slicing.",
@@ -57,7 +57,7 @@ export const MOST_POPULAR_DINNER = [
     ["pot", "pan", "strainer"],
     [
       "Bring a large pot of salted water to a rolling boil.",
-      "Add the spaghetti and cook according to package instructions.",
+      "Add the spaghetti and cook according to package instructions (about 8-10 minutes).",
       "Drain the pasta and toss with a little olive oil to prevent sticking.",
       "Finely chop the onion and mince the garlic.",
       "In a large pan, heat oil and sauté the onion and garlic until soft and fragrant.",
@@ -106,7 +106,7 @@ export const MOST_POPULAR_DINNER = [
     [
       "Slice the beef into thin strips and season with salt and pepper.",
       "Heat butter in a large pan over medium-high heat.",
-      "Sear the beef until browned on all sides. Remove and set aside.",
+      "Sear the beef until browned on all sides (about 5-6 minutes). Remove and set aside.",
       "Slice the mushrooms and finely chop the onion.",
       "In the same pan, add more butter and sauté the onions until translucent.",
       "Add the mushrooms and cook until softened.",
@@ -131,7 +131,7 @@ export const MOST_POPULAR_DINNER = [
     3,
     ["wok", "spatula", "knife"],
     [
-      "Boil a pot of water and cook the noodles according to package instructions.",
+      "Boil a pot of water and cook the noodles according to package instructions (about 5-7 minutes).",
       "Drain and rinse the noodles under cold water to prevent sticking.",
       "Chop the bok choy and slice the mushrooms.",
       "Heat sesame oil in a wok over medium-high heat.",

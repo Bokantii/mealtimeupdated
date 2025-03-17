@@ -34,6 +34,8 @@ import SelectAllergies from "./screens/OnBoarding/SelectAllergies";
 import SelectDislikes from "./screens/OnBoarding/SelectDislikes";
 import SelectDiet from "./screens/OnBoarding/SelectDiet";
 import SelectServings from "./screens/OnBoarding/SelectServings";
+import GrocerySearch from "./screens/MealTimeAppFlow/GrocerySearch";
+import { StaplesContextProvider } from "./store/staplesContext";
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 function AuthStack() {
@@ -49,6 +51,11 @@ function AuthStack() {
     >
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Signup" component={SignUp} />
+      <Stack.Screen name="SelectDiet" component={SelectDiet} />
+      <Stack.Screen name="SelectAllergies" component={SelectAllergies} />
+      <Stack.Screen name="SelectDislikes" component={SelectDislikes} />
+      <Stack.Screen name="SelectServings" component={SelectServings} />
+      <Stack.Screen name="SelectCollections" component={SelectCollections} />
     </Stack.Navigator>
   );
 }
@@ -144,6 +151,8 @@ function AuthenticatedStack() {
         component={SelectServings}
         options={{ header: false }}
       />
+      <Stack.Screen name="GrocerySearch" component={GrocerySearch} />
+      <Stack.Screen name="Groceries" component={Groceries} />
     </Stack.Navigator>
   );
 }
@@ -210,6 +219,7 @@ const TabNavigator = () => {
           },
           tabBarActiveTintColor: Colors.mealTimePrimary,
           tabBarInactiveTintColor: Colors.unfocused,
+          headerShown: false,
         }}
       />
       <Tab.Screen
@@ -228,7 +238,7 @@ const TabNavigator = () => {
           },
           tabBarActiveTintColor: Colors.mealTimePrimary,
           tabBarInactiveTintColor: Colors.unfocused,
-          // headerShown:false
+          headerShown: false,
         }}
       />
 
@@ -309,9 +319,11 @@ export default function App() {
   return (
     <View style={styles.container}>
       <AuthContextProvider>
-        <FavouriteContextProvider>
-          <Root />
-        </FavouriteContextProvider>
+        <StaplesContextProvider>
+          <FavouriteContextProvider>
+            <Root />
+          </FavouriteContextProvider>
+        </StaplesContextProvider>
       </AuthContextProvider>
     </View>
   );

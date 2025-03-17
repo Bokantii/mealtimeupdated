@@ -15,7 +15,8 @@ class Meal {
     description,
     tags,
     nutritionFacts,
-    groceryListArr
+    groceryListArr,
+    durationArr
   ) {
     console.log(`Creating Meal: ${title}`, { nutritionFacts, groceryListArr });
     
@@ -35,6 +36,7 @@ class Meal {
     this.tags = tags; // Array of tags for filtering
     this.nutritionFacts = nutritionFacts;
     this.groceryListArr = groceryListArr;
+    this.durationArr = durationArr;
   }
 }
 

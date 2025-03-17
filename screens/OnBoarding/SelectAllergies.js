@@ -7,7 +7,7 @@ import {
   import React, { useState } from "react";
   import { Colors } from "../../util/Colors";
   import NewUserSelections from "../../components/ui/NewUserSelections";
-  
+  import { useNavigation } from "@react-navigation/native";
   const SelectAllergies = ({ navigation }) => {
     const options = [
       "Gluten",
@@ -19,7 +19,9 @@ import {
       "Sulfite",
       "Nightshade",
     ];
-  
+   const submitHandler=()=>{
+    navigation.navigate("SelectDislikes")
+   }
     const [selected, setSelected] = useState([]);
   
     const toggleSelection = (item) => {
@@ -31,7 +33,7 @@ import {
     };
   
     return (
-      <NewUserSelections headingText="Any allergies?" action="Continue">
+      <NewUserSelections headingText="Any allergies?" action="Continue" navigate={submitHandler}>
         <View style={styles.gridContainer}>
           {options.map((item, index) => (
             <TouchableOpacity

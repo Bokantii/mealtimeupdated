@@ -32,8 +32,8 @@ const FeedbackScreen = ({ navigation }) => {
       setComment("");
       setRating(0);
       navigation.goBack();
-    }else{
-      Alert.alert("No comment Yet!","Please leave a comment!")
+    } else {
+      Alert.alert("No comment Yet!", "Please leave a comment!");
     }
   }
 
@@ -240,11 +240,11 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "black",
     fontWeight: "bold",
-
     padding: 10,
   },
   save: {
     backgroundColor: Colors.mealTimePrimary,
+    width: "100%",
   },
   modalOption: {
     paddingVertical: 15,

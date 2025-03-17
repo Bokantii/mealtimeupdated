@@ -4,7 +4,7 @@ import InstructionStepScreen from "./InstructionStepScreen"; // Importing Step S
 import { Colors } from "../../../util/Colors";
 const Tab = createMaterialTopTabNavigator();
 
-const InstructionTabNavigator = ({ instructions, ingredientsPerStep }) => {
+const InstructionTabNavigator = ({ instructions, ingredientsPerStep,duration }) => {
   return (
     <Tab.Navigator screenOptions={{ tabBarStyle: { display: "none" },tabBarPressColor:Colors.bodybgColor }}>
       {instructions.map((instruction, index) => (
@@ -17,6 +17,7 @@ const InstructionTabNavigator = ({ instructions, ingredientsPerStep }) => {
             instruction,
             totalSteps: instructions.length,
             ingredients: ingredientsPerStep[index] || [],
+            duration
           }}
         />
       ))}
