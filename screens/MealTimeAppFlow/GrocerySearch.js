@@ -15,11 +15,12 @@ import stapleData from "../../data/stapleData";
 import { Colors } from "../../util/Colors";
 import { AntDesign } from "@expo/vector-icons";
 
-const GrocerySearch = () => {
+const GrocerySearch = ({navigation}) => {
   const [searchQuery, setSearchQuery] = useState("");
   const filteredStaples = stapleData.filter((item) =>
     item.staple.toLowerCase().includes(searchQuery.toLowerCase())
   );
+ 
   return (
     <SafeAreaView style={styles.safeContainer}>
       <View style={styles.container}>

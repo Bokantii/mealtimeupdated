@@ -4,17 +4,25 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
-  ScrollView,
   SafeAreaView,
   Platform,
+  FlatList,
 } from "react-native";
 import { Colors } from "../../util/Colors";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import stapleData from "../../data/stapleData";
-import { FlatList } from "react-native-gesture-handler";
-import Ionicons from "@expo/vector-icons/Ionicons";
+
 const Groceries = ({ navigation }) => {
   const [warningVisible, setWarningVisible] = useState(true);
+  const [checkedItems, setCheckedItems] = useState([]);
+
+  const toggleItem = (item) => {
+    if (checkedItems.includes(item)) {
+      setCheckedItems(checkedItems.filter((i) => i !== item));
+    } else {
+      setCheckedItems([...checkedItems, item]);
+    }
+  };
 
   function hideWarning() {
     setWarningVisible(false);
@@ -23,29 +31,28 @@ const Groceries = ({ navigation }) => {
   function navigateToSearch() {
     navigation.navigate("GrocerySearch");
   }
+  function shopOnline(){
+    navigation.navigate("ShopOnline")
+  }
   const renderedStaples = stapleData.slice(0, 10);
+
   return (
     <SafeAreaView style={styles.safeContainer}>
-      {/* ✅ SafeAreaView added */}
+      {/* Header */}
       <View style={styles.headingContainer}>
         <Text style={styles.heading}>Groceries</Text>
         <TouchableOpacity onPress={navigateToSearch}>
-          <AntDesign
-            name="plus"
-            size={24}
-            color="black"
-            style={styles.plusIcon}
-          />
+          <AntDesign name="plus" size={24} color="black" style={styles.plusIcon} />
         </TouchableOpacity>
       </View>
+
       {/* Allergen Warning */}
       {warningVisible && (
         <View style={styles.allergenWarning}>
           <Text style={styles.allergenWarningHeader}>Allergen Warning</Text>
           <Text style={styles.allergenWarningBody}>
-            Ingredients with a ⚠️ symbol may contain allergens. Tap an
-            ingredient for more details, and make sure to purchase an
-            allergen-free variety.
+            Ingredients with a ⚠️ symbol may contain allergens. Tap an ingredient for more details, 
+            and make sure to purchase an allergen-free variety.
           </Text>
           <TouchableOpacity onPress={hideWarning}>
             <View style={styles.gotIt}>
@@ -54,52 +61,34 @@ const Groceries = ({ navigation }) => {
           </TouchableOpacity>
         </View>
       )}
-      {/* Allergen Warning end*/}
+
+      {/* Grocery List */}
       <View>
-        <Text
-          style={{
-            marginTop: 10,
-            color: "#666666",
-            width: "95%",
-            alignSelf: "center",
-          }}
-        >
-          Produce
-        </Text>
+        <Text style={styles.sectionTitle}>Produce</Text>
         <FlatList
           data={renderedStaples}
           keyExtractor={(item, index) => index.toString().toLowerCase()}
-          renderItem={({ item }) => (
-            <View
-              style={{
-                flexDirection: "row",
-                paddingVertical: 20,
-                alignItems: "center",
-                borderBottomWidth: 1,
-                borderBottomColor: "#cccccc",
-                width: "95%",
-                alignSelf: "center",
-              }}
-            >
-              <TouchableOpacity>
-                <Ionicons name="checkmark" size={24} color="#cccccc" />
-              </TouchableOpacity>
-              <Text
-                style={{
-                  fontSize: 16,
-                  marginLeft: 10,
-                  textTransform: "lowercase",
-                  fontWeight: "500",
-                }}
-              >
-                {item.staple}
-              </Text>
-            </View>
-          )}
+          renderItem={({ item }) => {
+            const isChecked = checkedItems.includes(item.staple);
+            return (
+              <View style={styles.listItem}>
+                {/* Checkbox */}
+                <TouchableOpacity onPress={() => toggleItem(item.staple)} style={[styles.checkbox, isChecked && styles.checkedBox]}>
+                  {isChecked && <View style={styles.innerCheck} />}
+                </TouchableOpacity>
+                
+                {/* Item Text */}
+                <Text style={[styles.itemText, isChecked && styles.strikethrough]}>
+                  {item.staple}
+                </Text>
+              </View>
+            );
+          }}
         />
       </View>
-      {/* ✅ Shop Online button positioned properly */}
-      <TouchableOpacity style={styles.shopOnline}>
+
+      {/* Shop Online Button */}
+      <TouchableOpacity style={styles.shopOnline} onPress={shopOnline}>
         <Text style={styles.shopOnlineText}>Shop Online</Text>
       </TouchableOpacity>
     </SafeAreaView>
@@ -114,10 +103,6 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.bodybgColor,
     paddingHorizontal: 10,
   },
-  heading: {
-    fontWeight: "500",
-    fontSize: 30,
-  },
   headingContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -125,6 +110,10 @@ const styles = StyleSheet.create({
     marginTop: Platform.OS === "ios" ? 10 : 50,
     width: "95%",
     alignSelf: "center",
+  },
+  heading: {
+    fontWeight: "500",
+    fontSize: 30,
   },
   plusIcon: {
     fontWeight: "bold",
@@ -159,8 +148,50 @@ const styles = StyleSheet.create({
   gotItText: {
     fontWeight: "bold",
   },
-  scrollContainer: {
-    flex: 1,
+  sectionTitle: {
+    marginTop: 10,
+    color: "#666666",
+    width: "95%",
+    alignSelf: "center",
+  },
+  listItem: {
+    flexDirection: "row",
+    paddingVertical: 15,
+    alignItems: "center",
+    borderBottomWidth: 1,
+    borderBottomColor: "#cccccc",
+    width: "95%",
+    alignSelf: "center",
+  },
+  checkbox: {
+    width: 22,
+    height: 22,
+    borderRadius: 4, // Slight rounding like in screenshot
+    borderWidth: 2,
+    borderColor: "#A1A1A1", // Light gray border for unselected
+    backgroundColor: "#FFFFFF",
+    marginRight: 12,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  checkedBox: {
+    borderColor: "#F58700", // Orange border when checked
+    backgroundColor: "#F58700",
+  },
+  innerCheck: {
+    width: 12,
+    height: 12,
+    borderRadius: 2, // Small rounded corners inside
+    backgroundColor: "#FFFFFF",
+  },
+  itemText: {
+    fontSize: 16,
+    fontWeight: "600",
+    color: "black",
+  },
+  strikethrough: {
+    textDecorationLine: "line-through",
+    color: "#A1A1A1", // Dimmed gray when checked
   },
   shopOnline: {
     flexDirection: "row",

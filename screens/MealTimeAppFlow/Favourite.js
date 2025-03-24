@@ -7,6 +7,7 @@ import {
   Pressable,
   StyleSheet,
   ActivityIndicator,
+  SafeAreaView,
 } from "react-native";
 import { FavouriteContext } from "../../store/favourites-context";
 import { ALL_MEALS } from "../../data/ALLMEALS";
@@ -83,43 +84,45 @@ const FavoritesScreen = ({ navigation }) => {
       setIsLoading(false);
     }
   };
-  
 
   useEffect(() => {
     fetchBookmark();
   }, []);
 
   return (
-    <View style={styles.screenContainer}>
-      {isLoading ? (
-        <ActivityIndicator size="large" color={Colors.primary500} />
-      ) : bookmarkItem.length > 0 ? (
-        <FlatList
-          data={bookmarkItem}
-          keyExtractor={(item) => item.id}
-          renderItem={renderMealItem}
-        />
-      ) : (
-        <View style={styles.emptyContainer}>
-          <Text style={styles.emptyText}>
-            No favorite meals yet. Start adding some!
-          </Text>
-        </View>
-      )}
-    </View>
+    <SafeAreaView style={styles.safeContainer}>
+      <View style={styles.screenContainer}>
+        <Text style={styles.heading}>Favourites</Text>
+        {isLoading ? (
+          <ActivityIndicator size="large" color={Colors.primary500} />
+        ) : bookmarkItem.length > 0 ? (
+          <FlatList
+            data={bookmarkItem}
+            keyExtractor={(item) => item.id}
+            renderItem={renderMealItem}
+          />
+        ) : (
+          <View style={styles.emptyContainer}>
+            <Text style={styles.emptyText}>
+              No favorite meals yet. Start adding some!
+            </Text>
+          </View>
+        )}
+      </View>
+    </SafeAreaView>
   );
-  
 };
 
 export default FavoritesScreen;
 
 const styles = StyleSheet.create({
+  safeContainer: { flex: 1, backgroundColor: Colors.bodybgColor },
   screenContainer: {
     flex: 1,
-    backgroundColor: Colors.bodybgColor,
     paddingHorizontal: 15,
     paddingTop: 20,
   },
+  heading: { fontWeight: "600", fontSize: 30 },
   mealItem: {
     flexDirection: "row",
     backgroundColor: "white",

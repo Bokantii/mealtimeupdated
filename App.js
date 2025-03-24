@@ -36,6 +36,7 @@ import SelectDiet from "./screens/OnBoarding/SelectDiet";
 import SelectServings from "./screens/OnBoarding/SelectServings";
 import GrocerySearch from "./screens/MealTimeAppFlow/GrocerySearch";
 import { StaplesContextProvider } from "./store/staplesContext";
+import ShopOnline from "./screens/MealTimeAppFlow/ShopOnline";
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 function AuthStack() {
@@ -153,6 +154,7 @@ function AuthenticatedStack() {
       />
       <Stack.Screen name="GrocerySearch" component={GrocerySearch} />
       <Stack.Screen name="Groceries" component={Groceries} />
+      <Stack.Screen name="ShopOnline" component={ShopOnline} />
     </Stack.Navigator>
   );
 }
@@ -238,7 +240,7 @@ const TabNavigator = () => {
           },
           tabBarActiveTintColor: Colors.mealTimePrimary,
           tabBarInactiveTintColor: Colors.unfocused,
-          headerShown: false,
+          headerShown: true,
         }}
       />
 
