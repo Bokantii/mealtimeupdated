@@ -4,7 +4,7 @@ export const RECOMMENDED_SNACKS = [
   new Meal(
     "1",
     "Roasted Cauliflower Steaks",
-    "https://media.istockphoto.com/id/1392551773/photo/vegetarian-cauliflower-steaks-with-microgreens-and-lemon-on-the-plate-close-up-alternative-to.webp",
+    "https://media.istockphoto.com/id/1290730147/photo/cauliflower-steaks-with-herb-sauce-and-spice-plant-based-meat-substitute.jpg?s=612x612&w=0&k=20&c=dwnNTaPVx8GdJKFJAbaUQot7_N7zuqfEWxr5pa-N5wg=",
     30,
     2,
     ["cauliflower", "olive oil", "paprika", "garlic powder", "salt", "pepper"],
@@ -16,7 +16,7 @@ export const RECOMMENDED_SNACKS = [
       "Slice cauliflower into thick steaks and arrange on a baking sheet.",
       "Brush both sides with olive oil and season with paprika, garlic powder, salt, and pepper.",
       "Roast in the oven for 20-25 minutes, flipping halfway through, until golden brown.",
-      "Serve warm, garnished with microgreens or lemon slices if desired."
+      "Serve warm, garnished with microgreens or lemon slices if desired.",
     ],
     false,
     "Snacks",
@@ -28,7 +28,7 @@ export const RECOMMENDED_SNACKS = [
       fat: 7,
       carbohydrates: 12,
       fiber: 5,
-      sugar: 4
+      sugar: 4,
     },
     [
       "Cauliflower",
@@ -38,13 +38,13 @@ export const RECOMMENDED_SNACKS = [
       "Salt",
       "Black pepper",
       "Lemon (Optional)",
-      "Microgreens (Optional)"
+      "Microgreens (Optional)",
     ]
   ),
   new Meal(
     "2",
     "Tandoori Chicken with Naan Bread",
-    "https://media.istockphoto.com/id/147452586/photo/tandoori-chicken-on-naan.webp",
+    "https://media.istockphoto.com/id/641845768/photo/chicken-tikka-masala-spicy-curry-meat-food-with-rice.jpg?s=612x612&w=0&k=20&c=xuN7pIMIbqbOu4A-P0v6hzF09UFdA3Mr9Y9ZWaisU4w=",
     40,
     4,
     ["chicken thighs", "yogurt", "tandoori spice mix", "naan bread", "lemon"],
@@ -56,7 +56,7 @@ export const RECOMMENDED_SNACKS = [
       "Marinate chicken thighs in the mixture for at least 30 minutes.",
       "Preheat oven to 375°F (190°C).",
       "Arrange marinated chicken on a baking sheet and bake for 30 minutes or until fully cooked.",
-      "Serve with warm naan bread and lemon wedges for a zesty kick."
+      "Serve with warm naan bread and lemon wedges for a zesty kick.",
     ],
     false,
     "Snacks",
@@ -68,7 +68,7 @@ export const RECOMMENDED_SNACKS = [
       fat: 18,
       carbohydrates: 38,
       fiber: 3,
-      sugar: 6
+      sugar: 6,
     },
     [
       "Chicken thighs",
@@ -78,13 +78,13 @@ export const RECOMMENDED_SNACKS = [
       "Lemon",
       "Salt",
       "Garlic (Optional)",
-      "Cilantro (Optional)"
+      "Cilantro (Optional)",
     ]
   ),
   new Meal(
     "3",
     "Shrimp Scampi",
-    "https://media.istockphoto.com/id/483571809/photo/shrimp-scampi.webp",
+    "https://media.istockphoto.com/id/1414307299/photo/closeup-garlic-butter-shrimp-in-pan.jpg?s=612x612&w=0&k=20&c=4J1w6K8W-bL8yJSioQVoPVGT9pipj3IcimSExRRQbm4=",
     25,
     4,
     ["shrimp", "butter", "garlic", "lemon", "parsley", "pasta or bread"],
@@ -96,7 +96,7 @@ export const RECOMMENDED_SNACKS = [
       "Add minced garlic and sauté until fragrant.",
       "Stir in shrimp and cook until they turn pink, about 3-4 minutes.",
       "Squeeze fresh lemon juice over the shrimp and sprinkle with chopped parsley.",
-      "Serve hot over pasta or with crusty bread for dipping."
+      "Serve hot over pasta or with crusty bread for dipping.",
     ],
     false,
     "Snacks",
@@ -108,7 +108,7 @@ export const RECOMMENDED_SNACKS = [
       fat: 14,
       carbohydrates: 10,
       fiber: 1,
-      sugar: 1
+      sugar: 1,
     },
     [
       "Shrimp",
@@ -120,7 +120,7 @@ export const RECOMMENDED_SNACKS = [
       "Salt",
       "Black pepper",
       "Red pepper flakes (Optional)",
-      "White wine (Optional)"
+      "White wine (Optional)",
     ]
-  )
+  ),
 ];

@@ -11,7 +11,7 @@ import {
 import { Colors } from "../../util/Colors";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import stapleData from "../../data/stapleData";
-
+import { Ionicons } from "@expo/vector-icons";
 const Groceries = ({ navigation }) => {
   const [warningVisible, setWarningVisible] = useState(true);
   const [checkedItems, setCheckedItems] = useState([]);
@@ -74,9 +74,9 @@ const Groceries = ({ navigation }) => {
               <View style={styles.listItem}>
                 {/* Checkbox */}
                 <TouchableOpacity onPress={() => toggleItem(item.staple)} style={[styles.checkbox, isChecked && styles.checkedBox]}>
-                  {isChecked && <View style={styles.innerCheck} />}
+                  {isChecked && <Ionicons name="checkmark" size={18} color="white" />}
                 </TouchableOpacity>
-                
+              
                 {/* Item Text */}
                 <Text style={[styles.itemText, isChecked && styles.strikethrough]}>
                   {item.staple}

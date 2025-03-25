@@ -4,7 +4,7 @@ export const RECOMMENDED_DINNER = [
   new Meal(
     "1",
     "Chicken Pot Pie",
-    "https://media.istockphoto.com/id/1307065945/photo/cast-iron-chicken-pot-pie.webp",
+    "https://media.istockphoto.com/id/1334934055/photo/healthy-homemade-chicken-pot-pie.jpg?s=612x612&w=0&k=20&c=zRBrq_qQH7TjS1IhlYguocgYk88EC4aZ_C-rVTsBRi4=",
     60,
     4,
     ["chicken", "mixed-vegetables", "pie-crust", "cream", "butter", "flour"],
@@ -53,7 +53,7 @@ export const RECOMMENDED_DINNER = [
   new Meal(
     "2",
     "Beef and Broccoli Stir-Fry",
-    "https://media.istockphoto.com/id/2164275085/photo/beef-and-broccoli-stir-fry.webp",
+    "https://media.istockphoto.com/id/521414601/photo/beef-and-broccoli-chinese-stirfry.jpg?s=612x612&w=0&k=20&c=6FL0C2cwFI8x17TZ0-l1lD1-PFQdTFljA2YkRCJkyrs=",
     25,
     4,
     ["beef-slices", "broccoli", "soy-sauce", "ginger", "garlic", "cornstarch"],
@@ -101,7 +101,7 @@ export const RECOMMENDED_DINNER = [
   new Meal(
     "3",
     "Gnocchi with Spinach and White Sauce",
-    "https://media.istockphoto.com/id/2125938071/photo/gnocchi-with-white-sauce-and-spinach.webp",
+    "https://media.istockphoto.com/id/840657144/photo/gnocchi-with-mushroom-sauce-spinach-chicken-top-view-on-dark-stone.jpg?s=612x612&w=0&k=20&c=cEikF1B7qEYBwf7rBzdup_iumDTwM_LH8XMUBVl2JUY=",
     30,
     4,
     ["gnocchi", "spinach", "cream", "parmesan-cheese", "butter", "garlic"],

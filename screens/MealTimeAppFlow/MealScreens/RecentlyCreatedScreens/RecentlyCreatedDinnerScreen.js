@@ -1,10 +1,20 @@
-import React from "react";
-import { View, StyleSheet } from "react-native";
+import React, { useContext } from "react";
+import { View, StyleSheet, Alert } from "react-native";
 import FlatListVertical from "../../../../components/ui/FlatListVertical";
 import Card from "../../../../components/ui/Card";
 import { Colors } from "../../../../util/Colors";
 import { RECENTLY_CREATED_DINNER } from "../../../../models/mealCategories/recentlyCreated/dinnerClass";
-const RecentlyCreatedDinnerScreen = ({searchQuery}) => {
+import { MealContext } from "../../../../store/meals-context";
+
+const RecentlyCreatedDinnerScreen = ({ searchQuery }) => {
+  const mealCtx = useContext(MealContext);
+
+  const addToMealPlan = (meal) => {
+    Alert.alert("Nice Pick! 🍽️", "Dinner added to your meal plan!");
+    mealCtx.addToPlan(meal);
+    console.log("Added to meal plan! MEAL IDS:", mealCtx.ids);
+  };
+
   const renderCard = ({ item }) => {
     return (
       <Card
@@ -21,9 +31,11 @@ const RecentlyCreatedDinnerScreen = ({searchQuery}) => {
         mealCategory={item.mealCategory}
         description={item.description}
         tags
+        onPress={() => addToMealPlan(item)}
       />
     );
   };
+
   return (
     <View style={styles.container}>
       <FlatListVertical
@@ -40,9 +52,10 @@ const RecentlyCreatedDinnerScreen = ({searchQuery}) => {
 };
 
 export default RecentlyCreatedDinnerScreen;
-const styles=StyleSheet.create({
+
+const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.bodybgColor,
-    flex:1
+    flex: 1,
   },
-})
+});

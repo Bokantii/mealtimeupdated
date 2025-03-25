@@ -45,6 +45,9 @@ const AuthForm = ({ isLogin, credentialIsInvalid, onSubmit }) => {
     setCheckboxIsChecked(true);
   }
   function submitHandler() {
+    if (!isLogin) {
+      navigation.navigate("SelectDiet");
+    }
     onSubmit({
       name: enteredName,
       email: enteredEmail,
@@ -59,9 +62,6 @@ const AuthForm = ({ isLogin, credentialIsInvalid, onSubmit }) => {
       confirmPassword: enteredConfirmPassword,
       confirmEmail: enteredConfirmEmail,
     });
-    if (!isLogin) {
-      navigation.navigate("SelectDiet");
-    }
   }
   return (
     <View style={styles.form}>

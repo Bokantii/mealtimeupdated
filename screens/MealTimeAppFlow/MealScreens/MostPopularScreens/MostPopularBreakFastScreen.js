@@ -1,12 +1,21 @@
-import React from "react";
-import { View,StyleSheet } from "react-native";
+import React,{useContext}from "react";
+import { View, StyleSheet,Alert } from "react-native";
 import FlatListVertical from "../../../../components/ui/FlatListVertical";
 import { MOST_POPULAR_BREAKFAST } from "../../../../models/mealCategories/mostPopular/breakfastClass";
 import Card from "../../../../components/ui/Card";
 import { Colors } from "../../../../util/Colors";
 import { useState } from "react";
-const MostPopularBreakFastScreen = ({searchQuery}) => {
-   
+import { MealContext } from "../../../../store/meals-context";
+const MostPopularBreakFastScreen = ({ searchQuery }) => {
+  const mealCtx= useContext(MealContext);
+  const addToMealPlan = (meal) => {
+    Alert.alert(
+      `Great Choice! \u{1F44D} `,
+      "This meal has been added to your meal plan!"
+    );
+    mealCtx.addToPlan(meal);
+    console.log(`Added to meal plan!, MEAL IDS:${mealCtx.ids}`);
+  };
   const renderCard = ({ item }) => {
     return (
       <Card
@@ -23,6 +32,7 @@ const MostPopularBreakFastScreen = ({searchQuery}) => {
         mealCategory={item.mealCategory}
         description={item.description}
         tags
+        onPress={addToMealPlan}
       />
     );
   };
@@ -42,9 +52,9 @@ const MostPopularBreakFastScreen = ({searchQuery}) => {
 };
 
 export default MostPopularBreakFastScreen;
-const styles=StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.bodybgColor,
-    flex:1
+    flex: 1,
   },
-})
+});

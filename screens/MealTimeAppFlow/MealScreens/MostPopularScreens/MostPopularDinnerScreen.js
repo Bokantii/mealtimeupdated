@@ -1,10 +1,23 @@
-import React from "react";
-import { View,StyleSheet } from "react-native";
+import React, { useContext } from "react";
+import { View, StyleSheet, Alert } from "react-native";
 import Card from "../../../../components/ui/Card";
 import FlatListVertical from "../../../../components/ui/FlatListVertical";
 import { MOST_POPULAR_DINNER } from "../../../../models/mealCategories/mostPopular/dinnerClass";
 import { Colors } from "../../../../util/Colors";
-const MostPopularDinnerScreen = ({searchQuery}) => {
+import { MealContext } from "../../../../store/meals-context";
+
+const MostPopularDinnerScreen = ({ searchQuery }) => {
+  const mealCtx = useContext(MealContext);
+
+  const addToMealPlan = (meal) => {
+    Alert.alert(
+      `Great Choice! \u{1F44D}`,
+      "This meal has been added to your meal plan!"
+    );
+    mealCtx.addToPlan(meal);
+    console.log(`Added to meal plan! MEAL IDS:`, mealCtx.ids);
+  };
+
   const renderCard = ({ item }) => {
     return (
       <Card
@@ -21,9 +34,11 @@ const MostPopularDinnerScreen = ({searchQuery}) => {
         mealCategory={item.mealCategory}
         description={item.description}
         tags
+        onPress={() => addToMealPlan(item)}
       />
     );
   };
+
   return (
     <View style={styles.container}>
       <FlatListVertical
@@ -40,9 +55,10 @@ const MostPopularDinnerScreen = ({searchQuery}) => {
 };
 
 export default MostPopularDinnerScreen;
-const styles=StyleSheet.create({
+
+const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.bodybgColor,
-    flex:1
+    flex: 1,
   },
-})
+});

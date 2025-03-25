@@ -93,11 +93,10 @@ const FavoritesScreen = ({ navigation }) => {
     <SafeAreaView style={styles.safeContainer}>
       <View style={styles.screenContainer}>
         <Text style={styles.heading}>Favourites</Text>
-        {isLoading ? (
-          <ActivityIndicator size="large" color={Colors.primary500} />
-        ) : bookmarkItem.length > 0 ? (
+
+        {favoriteCtx.ids.length > 0 ? (
           <FlatList
-            data={bookmarkItem}
+            data={favoriteCtx.ids}
             keyExtractor={(item) => item.id}
             renderItem={renderMealItem}
           />

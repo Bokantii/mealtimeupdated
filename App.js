@@ -37,8 +37,19 @@ import SelectServings from "./screens/OnBoarding/SelectServings";
 import GrocerySearch from "./screens/MealTimeAppFlow/GrocerySearch";
 import { StaplesContextProvider } from "./store/staplesContext";
 import ShopOnline from "./screens/MealTimeAppFlow/ShopOnline";
+import MealContextProvider from "./store/meals-context";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import Monday from "./screens/MealTimeAppFlow/Days/Monday";
+import Tuesday from "./screens/MealTimeAppFlow/Days/Tuesday";
+import Wednesday from "./screens/MealTimeAppFlow/Days/Wednesday";
+import Thursday from "./screens/MealTimeAppFlow/Days/Thursday";
+import Friday from "./screens/MealTimeAppFlow/Days/Friday";
+import Saturday from "./screens/MealTimeAppFlow/Days/Saturday";
+import Sunday from "./screens/MealTimeAppFlow/Days/Sunday";
+import { DrawerNavigator } from "./screens/MealTimeAppFlow/MealPlan";
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
+const Drawer = createDrawerNavigator();
 function AuthStack() {
   return (
     <Stack.Navigator
@@ -63,101 +74,117 @@ function AuthStack() {
 function AuthenticatedStack() {
   const authCtx = useContext(AuthContext);
   return (
-    <Stack.Navigator
-      screenOptions={{
-        headerStyle: { backgroundColor: Colors.mealTimePrimary },
-        headerTintColor: "black",
-        contentStyle: { backgroundColor: Colors.primary100 },
-        headerShown: false,
-      }}
-    >
-      <Stack.Screen
-        name="TabNavigator"
-        component={TabNavigator}
-        options={{
+    <>
+      <Stack.Navigator
+        screenOptions={{
+          headerStyle: { backgroundColor: Colors.mealTimePrimary },
+          headerTintColor: "black",
+          contentStyle: { backgroundColor: Colors.primary100 },
           headerShown: false,
         }}
-      />
-      <Stack.Screen
-        name="MealPlan"
-        component={MealPlan}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen name="Meals" component={Meals} />
-      <Stack.Screen name="MealDetail" component={MealDetail} />
-      <Stack.Screen
-        name="CookingInstructionScreen"
-        component={CookingInstructionScreen}
-      />
-      <Stack.Screen
-        name="MostPopularTabs"
-        component={MostPopularTabs}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="RecentlyCreatedMealsTabs"
-        component={RecentlyCreatedMealsTabs}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="RecommendedPlanTabs"
-        component={RecommendedPlanTabs}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="NotesScreen"
-        component={NotesScreen}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="NutritionFactsScreen"
-        component={NutritionFactsScreen}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="FeedbackScreen"
-        component={FeedbackScreen}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="AddNewCollection"
-        component={AddNewCollection}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="SelectCollections"
-        component={SelectCollections}
-        options={{ headerShown: false }}
-      />
+      >
+        <Stack.Screen
+          name="TabNavigator"
+          component={TabNavigator}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="MealPlan"
+          component={MealPlan}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen name="Meals" component={Meals} />
+        <Stack.Screen name="MealDetail" component={MealDetail} />
+        <Stack.Screen
+          name="CookingInstructionScreen"
+          component={CookingInstructionScreen}
+        />
+        <Stack.Screen
+          name="MostPopularTabs"
+          component={MostPopularTabs}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="RecentlyCreatedMealsTabs"
+          component={RecentlyCreatedMealsTabs}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="RecommendedPlanTabs"
+          component={RecommendedPlanTabs}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="NotesScreen"
+          component={NotesScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="NutritionFactsScreen"
+          component={NutritionFactsScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="FeedbackScreen"
+          component={FeedbackScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="AddNewCollection"
+          component={AddNewCollection}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="SelectCollections"
+          component={SelectCollections}
+          options={{ headerShown: false }}
+        />
 
-      <Stack.Screen
-        name="SelectAllergiesScreen"
-        component={SelectAllergies}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="SelectDislikesScreen"
-        component={SelectDislikes}
-        options={{ header: false }}
-      />
-      <Stack.Screen
-        name="SelectDietScreen"
-        component={SelectDiet}
-        options={{ header: false }}
-      />
-      <Stack.Screen
-        name="SelectServingsScreen"
-        component={SelectServings}
-        options={{ header: false }}
-      />
-      <Stack.Screen name="GrocerySearch" component={GrocerySearch} />
-      <Stack.Screen name="Groceries" component={Groceries} />
-      <Stack.Screen name="ShopOnline" component={ShopOnline} />
-    </Stack.Navigator>
+        <Stack.Screen
+          name="SelectAllergiesScreen"
+          component={SelectAllergies}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="SelectDislikesScreen"
+          component={SelectDislikes}
+          options={{ header: false }}
+        />
+        <Stack.Screen
+          name="SelectDietScreen"
+          component={SelectDiet}
+          options={{ header: false }}
+        />
+        <Stack.Screen
+          name="SelectServingsScreen"
+          component={SelectServings}
+          options={{ header: false }}
+        />
+        <Stack.Screen name="GrocerySearch" component={GrocerySearch}  options={{ header: false }}/>
+        <Stack.Screen name="Groceries" component={Groceries}  options={{ header: false }}/>
+        <Stack.Screen name="ShopOnline" component={ShopOnline}  options={{ header: false }}/>
+        <Stack.Screen name="Drawer" component={DrawerNavigator}  options={{ header: false }}/>
+      </Stack.Navigator>
+    </>
   );
 }
+// function DrawerNavigator() {
+//   return (
+//     <Drawer.Navigator initialRouteName="Monday">
+//       <Drawer.Screen name="Monday" component={Monday} />
+//       <Drawer.Screen name="Tuesday" component={Tuesday} />
+//       <Drawer.Screen name="Wednesday" component={Wednesday} />
+//       <Drawer.Screen name="Thursday" component={Thursday} />
+//       <Drawer.Screen name="Friday" component={Friday} />
+//       <Drawer.Screen name="Saturday" component={Saturday} />
+//       <Drawer.Screen name="Sunday" component={Sunday} />
+//     </Drawer.Navigator>
+//   );
+// }
 function Navigation() {
   const authCtx = useContext(AuthContext);
 
@@ -323,7 +350,9 @@ export default function App() {
       <AuthContextProvider>
         <StaplesContextProvider>
           <FavouriteContextProvider>
-            <Root />
+            <MealContextProvider>
+              <Root />
+            </MealContextProvider>
           </FavouriteContextProvider>
         </StaplesContextProvider>
       </AuthContextProvider>

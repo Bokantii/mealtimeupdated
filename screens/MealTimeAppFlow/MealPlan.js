@@ -1,10 +1,21 @@
-import { StyleSheet, Text, View, Modal } from "react-native";
+import { StyleSheet, Text, View, FlatList } from "react-native";
 import { Colors } from "../../util/Colors";
 import Button from "../../components/ui/Button";
 import { useNavigation } from "@react-navigation/native";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../store/authContext";
-import * as Notifications from 'expo-notifications';
+import * as Notifications from "expo-notifications";
+import { MealContext } from "../../store/meals-context";
+import { ALL_MEALS } from "../../data/ALLMEALS";
+import Card from "../../components/ui/Card";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import Monday from "./Days/Monday";
+import Tuesday from "./Days/Tuesday";
+import Wednesday from "./Days/Tuesday";
+import Thursday from "./Days/Thursday";
+import Friday from "./Days/Friday";
+import Saturday from "./Days/Saturday";
+import Sunday from "./Days/Sunday";
 Notifications.setNotificationHandler({
   handleNotification: async () => {
     return {
@@ -14,25 +25,69 @@ Notifications.setNotificationHandler({
     };
   },
 });
+const Drawer = createDrawerNavigator();
+export function DrawerNavigator() {
+  return (
+    <Drawer.Navigator
+      initialRouteName="Monday"
+      screenOptions={{
+        drawerActiveTintColor: Colors.mealTimePrimary,
+        drawerStyle: { backgroundColor: Colors.bodybgColor },
+      }}
+    >
+      <Drawer.Screen name="Monday" component={Monday} />
+      <Drawer.Screen name="Tuesday" component={Tuesday} />
+      <Drawer.Screen name="Wednesday" component={Wednesday} />
+      <Drawer.Screen name="Thursday" component={Thursday} />
+      <Drawer.Screen name="Friday" component={Friday} />
+      <Drawer.Screen name="Saturday" component={Saturday} />
+      <Drawer.Screen name="Sunday" component={Sunday} />
+    </Drawer.Navigator>
+  );
+}
 const MealPlan = () => {
-  function scheduleNotificationHandler() {
-    console.log('scheduling notification...');
-    Notifications.scheduleNotificationAsync({
-      content: {
-        title: "My first local notification",
-        body: "This is the body of the notification",
-        data: { userName: "Daniel" },
-      },
-      trigger: { seconds: 5 },
-    });
-  }
   const navigation = useNavigation();
   const { updateMealPlanStatus } = useContext(AuthContext);
+  const mealCtx = useContext(MealContext);
 
   const navigateToMeals = async () => {
     await updateMealPlanStatus(true);
     navigation.navigate("Meals");
   };
+
+  const mealsInPlan = mealCtx.ids
+    .map((id) => ALL_MEALS.find((meal) => meal.id === id))
+    .filter(Boolean); // remove nulls if any ID isn't found
+
+  const renderCard = ({ item }) => (
+    <Card
+      id={item.id}
+      title={item.title}
+      imgUrl={item.imgUrl}
+      duration={item.duration}
+      numOfServings={item.numOfServings}
+      ingredientsId={item.ingredientsId}
+      ingredientQtyId={item.ingredientQtyId}
+      cookware={item.cookware}
+      instructions={item.instructions}
+      isPro={item.isPro}
+      mealCategory={item.mealCategory}
+      description={item.description}
+      tags={item.tags}
+    />
+  );
+
+  const hasMeals = (
+    // <FlatList
+    //   data={mealsInPlan}
+    //   keyExtractor={(item) => item.id}
+    //   renderItem={renderCard}
+    //   numColumns={2}
+    //   columnWrapperStyle={styles.columnWrapper}
+    //   contentContainerStyle={styles.flatListContent}
+    // />
+    <DrawerNavigator />
+  );
 
   const hasNoMeals = (
     <View style={styles.content}>
@@ -44,21 +99,14 @@ const MealPlan = () => {
       <Button isAlternateBtnStyle onPress={navigateToMeals}>
         Build Your First Meal Plan
       </Button>
+    </View>
+  );
 
-    </View>
-  );
-  const hasMeals = (
+  return (
     <View style={styles.container}>
-      <Text>Monday:</Text>
-      <Text>Tuesday:</Text>
-      <Text>Wednesday:</Text>
-      <Text>Thursday:</Text>
-      <Text>Friday:</Text>
-      <Text>Saturday:</Text>
-      <Text>Sunday:</Text>
+      {mealCtx.ids.length > 0 ? hasMeals : hasNoMeals}
     </View>
   );
-  return <View style={styles.container}>{hasNoMeals}</View>;
 };
 
 export default MealPlan;
@@ -67,12 +115,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.bodybgColor,
-    justifyContent: "center",
-    alignItems: "center",
   },
   content: {
-    width: "90%",
+    flex: 1,
+    justifyContent: "center",
     alignItems: "center",
+    paddingHorizontal: 20,
   },
   title: {
     textAlign: "center",
@@ -88,7 +136,12 @@ const styles = StyleSheet.create({
     width: "70%",
     color: "#666666",
   },
-  subTitle: {
-    textAlign: "center",
+  flatListContent: {
+    paddingHorizontal: 10,
+    paddingTop: 10,
+  },
+  columnWrapper: {
+    justifyContent: "space-between",
+    marginBottom: 20,
   },
 });

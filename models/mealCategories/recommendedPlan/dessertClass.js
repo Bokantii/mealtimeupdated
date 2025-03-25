@@ -4,7 +4,7 @@ export const RECOMMENDED_DESSERTS = [
   new Meal(
     "1",
     "Crème Brûlée",
-    "https://media.istockphoto.com/id/1385407587/photo/delicouis-creme-brulee.webp?a=1&b=1&s=612x612&w=0&k=20&c=gmgvkBOudZQzFubLP3nHjiDQzq-4XFoLLobMl2f3k0Y=",
+    "https://media.istockphoto.com/id/864319230/photo/creme-brulee.jpg?s=612x612&w=0&k=20&c=GkdVLQZ0du5MK2o3TofjrktFm_UKbSA88PKBJ1olcrU=",
     60,
     4,
     ["heavy-cream", "sugar", "egg-yolks", "vanilla-extract", "sugar-topping"],

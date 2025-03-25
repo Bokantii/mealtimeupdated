@@ -1,10 +1,20 @@
-import React from "react";
-import { View,StyleSheet } from "react-native";
+import React, { useContext } from "react";
+import { View, StyleSheet, Alert } from "react-native";
 import FlatListVertical from "../../../../components/ui/FlatListVertical";
-import { RECOMMENDED_DESSERTS } from "../../../../models/mealCategories/recommendedPlan/dessertClass";
+import { LUNCH_OPTIONS } from "../../../../models/mealCategories/recommendedPlan/lunchClass";
 import Card from "../../../../components/ui/Card";
 import { Colors } from "../../../../util/Colors";
-const RecommendedPlanLunchScreen = ({searchQuery}) => {
+import { MealContext } from "../../../../store/meals-context";
+
+const RecommendedPlanLunchScreen = ({ searchQuery }) => {
+  const mealCtx = useContext(MealContext);
+
+  const addToMealPlan = (meal) => {
+    Alert.alert("Lunch added! 🥪", "Meal has been added to your plan.");
+    mealCtx.addToPlan(meal);
+    console.log("Added to meal plan! MEAL IDS:", mealCtx.ids);
+  };
+
   const renderCard = ({ item }) => {
     return (
       <Card
@@ -21,13 +31,15 @@ const RecommendedPlanLunchScreen = ({searchQuery}) => {
         mealCategory={item.mealCategory}
         description={item.description}
         tags
+        onPress={() => addToMealPlan(item)}
       />
     );
   };
+
   return (
     <View style={styles.container}>
       <FlatListVertical
-        data={RECOMMENDED_DESSERTS}
+        data={LUNCH_OPTIONS}
         keyExtractor={(item) => item.id}
         horizontal={false}
         renderItem={renderCard}
@@ -41,9 +53,9 @@ const RecommendedPlanLunchScreen = ({searchQuery}) => {
 
 export default RecommendedPlanLunchScreen;
 
-const styles=StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.bodybgColor,
-    flex:1
+    flex: 1,
   },
-})
+});

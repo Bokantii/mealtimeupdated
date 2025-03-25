@@ -28,14 +28,16 @@ import ScrollViewUI from "../../components/ui/ScrollViewUI";
 import { mealContext } from "../../store/meals-context";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { MOST_POPULAR_LUNCH } from "../../models/mealCategories/mostPopular/lunchClass";
-
+import { MealContext } from "../../store/meals-context";
 const Meals = () => {
-  const addToMealPlan = () => {
+  const mealCtx = useContext(MealContext)
+  const addToMealPlan = (meal) => {
     Alert.alert(
       `Great Choice! \u{1F44D} `,
       "This meal has been added to your meal plan!"
     );
-    console.log("Added to meal plan!");
+    mealCtx.addToPlan(meal)
+    console.log(`Added to meal plan!, MEAL IDS:${mealCtx.ids}`);
   };
   const renderCard = ({ item }) => {
     return (

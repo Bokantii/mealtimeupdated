@@ -1,10 +1,20 @@
-import React from "react";
-import { View, StyleSheet } from "react-native";
+import React, { useContext } from "react";
+import { View, StyleSheet, Alert } from "react-native";
 import FlatListVertical from "../../../../components/ui/FlatListVertical";
 import { RECOMMENDED_PLAN_BREAKFAST } from "../../../../models/mealCategories/recommendedPlan/breakfastClass";
 import Card from "../../../../components/ui/Card";
 import { Colors } from "../../../../util/Colors";
-const RecommendedPlanBreakFastScreen = ({searchQuery}) => {
+import { MealContext } from "../../../../store/meals-context";
+
+const RecommendedPlanBreakFastScreen = ({ searchQuery }) => {
+  const mealCtx = useContext(MealContext);
+
+  const addToMealPlan = (meal) => {
+    Alert.alert("✅ Added to Plan!", "Breakfast saved to your plan.");
+    mealCtx.addToPlan(meal);
+    console.log("Added to meal plan! MEAL IDS:", mealCtx.ids);
+  };
+
   const renderCard = ({ item }) => {
     return (
       <Card
@@ -21,9 +31,11 @@ const RecommendedPlanBreakFastScreen = ({searchQuery}) => {
         mealCategory={item.mealCategory}
         description={item.description}
         tags
+        onPress={() => addToMealPlan(item)}
       />
     );
   };
+
   return (
     <View style={styles.container}>
       <FlatListVertical
@@ -41,9 +53,9 @@ const RecommendedPlanBreakFastScreen = ({searchQuery}) => {
 
 export default RecommendedPlanBreakFastScreen;
 
-const styles=StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.bodybgColor,
-    flex:1
+    flex: 1,
   },
-})
+});
