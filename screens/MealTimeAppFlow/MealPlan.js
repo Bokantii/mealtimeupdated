@@ -11,7 +11,7 @@ import Card from "../../components/ui/Card";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import Monday from "./Days/Monday";
 import Tuesday from "./Days/Tuesday";
-import Wednesday from "./Days/Tuesday";
+import Wednesday from "./Days/Wednesday";
 import Thursday from "./Days/Thursday";
 import Friday from "./Days/Friday";
 import Saturday from "./Days/Saturday";
@@ -29,10 +29,13 @@ const Drawer = createDrawerNavigator();
 export function DrawerNavigator() {
   return (
     <Drawer.Navigator
+    
       initialRouteName="Monday"
       screenOptions={{
+        headerShown:false,
         drawerActiveTintColor: Colors.mealTimePrimary,
         drawerStyle: { backgroundColor: Colors.bodybgColor },
+
       }}
     >
       <Drawer.Screen name="Monday" component={Monday} />
