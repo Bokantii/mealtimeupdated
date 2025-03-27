@@ -17,6 +17,7 @@ const Card = ({
   description,
   tags,
   onPress,
+  addRemoveIcon
 }) => {
   const navigation = useNavigation();
   function navToDetails() {
@@ -34,6 +35,7 @@ const Card = ({
       mealCategory,
       description,
       tags,
+     
     });
   }
 
@@ -44,7 +46,7 @@ const Card = ({
           <Image source={{ uri: imgUrl }} style={styles.img} />
         </Pressable>
         <Pressable style={styles.iconContainer} onPress={onPress}>
-          <AntDesign name="plus" size={19} color="black" style={styles.icon} />
+          <AntDesign name={addRemoveIcon} size={19} color="black" style={styles.icon} />
         </Pressable>
       </View>
       <Text style={styles.title}>{title}</Text>

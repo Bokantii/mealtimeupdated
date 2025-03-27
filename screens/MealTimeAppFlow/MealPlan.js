@@ -16,6 +16,7 @@ import Thursday from "./Days/Thursday";
 import Friday from "./Days/Friday";
 import Saturday from "./Days/Saturday";
 import Sunday from "./Days/Sunday";
+import Meals from "./Meals";
 Notifications.setNotificationHandler({
   handleNotification: async () => {
     return {
@@ -45,6 +46,7 @@ export function DrawerNavigator() {
       <Drawer.Screen name="Friday" component={Friday} />
       <Drawer.Screen name="Saturday" component={Saturday} />
       <Drawer.Screen name="Sunday" component={Sunday} />
+      <Drawer.Screen name="< Back to Meals" component={Meals}/>
     </Drawer.Navigator>
   );
 }
@@ -77,6 +79,7 @@ const MealPlan = () => {
       mealCategory={item.mealCategory}
       description={item.description}
       tags={item.tags}
+      addRemoveIcon="minus"
     />
   );
 

@@ -42,6 +42,7 @@ import {
               mealCategory={meal.mealCategory}
               description={meal.description}
               tags={meal.tags}
+              addRemoveIcon="minus"
             />
           )}
         />

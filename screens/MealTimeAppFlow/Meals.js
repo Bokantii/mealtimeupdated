@@ -30,13 +30,13 @@ import AntDesign from "@expo/vector-icons/AntDesign";
 import { MOST_POPULAR_LUNCH } from "../../models/mealCategories/mostPopular/lunchClass";
 import { MealContext } from "../../store/meals-context";
 const Meals = () => {
-  const mealCtx = useContext(MealContext)
+  const mealCtx = useContext(MealContext);
   const addToMealPlan = (meal) => {
     Alert.alert(
       `Great Choice! \u{1F44D} `,
       "This meal has been added to your meal plan!"
     );
-    mealCtx.addToPlan(meal)
+    mealCtx.addToPlan(meal);
     console.log(`Added to meal plan!, MEAL IDS:${mealCtx.ids}`);
   };
   const renderCard = ({ item }) => {
@@ -56,6 +56,7 @@ const Meals = () => {
         description={item.description}
         tags
         onPress={addToMealPlan}
+        addRemoveIcon="plus"
       />
     );
   };
@@ -107,7 +108,7 @@ const Meals = () => {
     navigation.goBack();
     console.log("Navigating home...");
   };
- 
+
   return (
     <View style={styles.container}>
       <View style={styles.headerIcons}>
@@ -122,11 +123,11 @@ const Meals = () => {
         <TextInput
           style={{
             borderWidth: 1,
-            borderColor:Colors.mealTimePrimary,
+            borderColor: Colors.mealTimePrimary,
             padding: 18,
             borderRadius: 5,
             marginTop: 10,
-            backgroundColor:Colors.bgAlt
+            backgroundColor: Colors.bgAlt,
           }}
           placeholder="Search meals..."
           value={searchQuery}
@@ -156,40 +157,44 @@ const Meals = () => {
       </View>
 
       {/* Popover Content */}
-      <Modal
-        animationType="fade"
-        transparent={true}
-        visible={isPopoverVisible}
-        onRequestClose={hidePopover}
-      >
-        <BlurView intensity={20} tint="dark" style={StyleSheet.absoluteFill}>
-          <View style={styles.modalOverlay}>
-            <Animated.View
-              style={[
-                styles.popover,
-                { opacity: fadeAnim, transform: [{ translateY }] },
-              ]}
-            >
-              <Pressable onPress={hidePopover} style={styles.cancel}>
-                <FontAwesome
-                  name="times"
-                  size={24}
-                  color="#999999"
-                  style={{ fontWeight: "100" }}
-                />
-              </Pressable>
-              <Text style={styles.modalTitle}>Build your first meal plan</Text>
-              <Text style={styles.modalsubTitle}>
-                Add a few recipes to cook this week, and we'll build you an
-                easy-to-shop grocery list.
-              </Text>
-              <Button onPress={hidePopover} isAlternateBtnStyle>
-                <Text>Got it!</Text>
-              </Button>
-            </Animated.View>
-          </View>
-        </BlurView>
-      </Modal>
+      {mealCtx.ids.length < 1 && (
+        <Modal
+          animationType="fade"
+          transparent={true}
+          visible={isPopoverVisible}
+          onRequestClose={hidePopover}
+        >
+          <BlurView intensity={20} tint="dark" style={StyleSheet.absoluteFill}>
+            <View style={styles.modalOverlay}>
+              <Animated.View
+                style={[
+                  styles.popover,
+                  { opacity: fadeAnim, transform: [{ translateY }] },
+                ]}
+              >
+                <Pressable onPress={hidePopover} style={styles.cancel}>
+                  <FontAwesome
+                    name="times"
+                    size={24}
+                    color="#999999"
+                    style={{ fontWeight: "100" }}
+                  />
+                </Pressable>
+                <Text style={styles.modalTitle}>
+                  Build your first meal plan
+                </Text>
+                <Text style={styles.modalsubTitle}>
+                  Add a few recipes to cook this week, and we'll build you an
+                  easy-to-shop grocery list.
+                </Text>
+                <Button onPress={hidePopover} isAlternateBtnStyle>
+                  <Text>Got it!</Text>
+                </Button>
+              </Animated.View>
+            </View>
+          </BlurView>
+        </Modal>
+      )}
     </View>
   );
 };
@@ -210,7 +215,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    marginTop:25,
+    marginTop: 25,
   },
   title: {
     fontSize: 30,
