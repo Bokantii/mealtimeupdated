@@ -47,6 +47,7 @@ import Friday from "./screens/MealTimeAppFlow/Days/Friday";
 import Saturday from "./screens/MealTimeAppFlow/Days/Saturday";
 import Sunday from "./screens/MealTimeAppFlow/Days/Sunday";
 import { DrawerNavigator } from "./screens/MealTimeAppFlow/MealPlan";
+import { DayContextProvider } from "./store/day-context";
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
@@ -164,10 +165,26 @@ function AuthenticatedStack() {
           component={SelectServings}
           options={{ header: false }}
         />
-        <Stack.Screen name="GrocerySearch" component={GrocerySearch}  options={{ header: false }}/>
-        <Stack.Screen name="Groceries" component={Groceries}  options={{ header: false }}/>
-        <Stack.Screen name="ShopOnline" component={ShopOnline}  options={{ header: false }}/>
-        <Stack.Screen name="Drawer" component={DrawerNavigator}  options={{ header: false }}/>
+        <Stack.Screen
+          name="GrocerySearch"
+          component={GrocerySearch}
+          options={{ header: false }}
+        />
+        <Stack.Screen
+          name="Groceries"
+          component={Groceries}
+          options={{ header: false }}
+        />
+        <Stack.Screen
+          name="ShopOnline"
+          component={ShopOnline}
+          options={{ header: false }}
+        />
+        <Stack.Screen
+          name="Drawer"
+          component={DrawerNavigator}
+          options={{ header: false }}
+        />
       </Stack.Navigator>
     </>
   );
@@ -348,13 +365,15 @@ export default function App() {
   return (
     <View style={styles.container}>
       <AuthContextProvider>
-        <StaplesContextProvider>
-          <FavouriteContextProvider>
-            <MealContextProvider>
-              <Root />
-            </MealContextProvider>
-          </FavouriteContextProvider>
-        </StaplesContextProvider>
+        <DayContextProvider>
+          <StaplesContextProvider>
+            <FavouriteContextProvider>
+              <MealContextProvider>
+                <Root/>
+              </MealContextProvider>
+            </FavouriteContextProvider>
+          </StaplesContextProvider>
+        </DayContextProvider>
       </AuthContextProvider>
     </View>
   );

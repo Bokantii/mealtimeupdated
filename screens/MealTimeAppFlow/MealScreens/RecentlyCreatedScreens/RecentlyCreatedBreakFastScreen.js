@@ -5,14 +5,35 @@ import { RECENTLY_CREATED_BREAKFAST } from "../../../../models/mealCategories/re
 import Card from "../../../../components/ui/Card";
 import { Colors } from "../../../../util/Colors";
 import { MealContext } from "../../../../store/meals-context";
+import { DayContext } from "../../../../store/day-context";
 
 const RecentlyCreatedBreakFastScreen = ({ searchQuery }) => {
   const mealCtx = useContext(MealContext);
+  const dayCtx = useContext(DayContext);
 
   const addToMealPlan = (meal) => {
-    Alert.alert("Great Choice! 👍", "This meal has been added to your meal plan!");
-    mealCtx.addToPlan(meal);
-    console.log(`Added to meal plan! MEAL IDS:`, mealCtx.ids);
+    Alert.alert(
+      "Add Meal to Day",
+      "Choose the day you want to add this meal to:",
+      [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday",
+      ].map((day) => ({
+        text: day,
+        onPress: () => {
+          dayCtx.addMeal(day, "Breakfast", meal);
+          mealCtx.addToPlan(meal);
+          Alert.alert("✅ Added!", `Meal added to ${day} - Breakfast`);
+          console.log(`✅ Added to ${day}: ${meal?.title}`);
+        },
+      })),
+      { cancelable: true }
+    );
   };
 
   const renderCard = ({ item }) => {
@@ -32,6 +53,7 @@ const RecentlyCreatedBreakFastScreen = ({ searchQuery }) => {
         description={item.description}
         tags
         onPress={() => addToMealPlan(item)}
+        addRemoveIcon="plus"
       />
     );
   };

@@ -17,6 +17,7 @@ import Friday from "./Days/Friday";
 import Saturday from "./Days/Saturday";
 import Sunday from "./Days/Sunday";
 import Meals from "./Meals";
+import { DayContext } from "../../store/day-context";
 Notifications.setNotificationHandler({
   handleNotification: async () => {
     return {
@@ -30,13 +31,11 @@ const Drawer = createDrawerNavigator();
 export function DrawerNavigator() {
   return (
     <Drawer.Navigator
-    
       initialRouteName="Monday"
       screenOptions={{
-        headerShown:false,
+        headerShown: false,
         drawerActiveTintColor: Colors.mealTimePrimary,
         drawerStyle: { backgroundColor: Colors.bodybgColor },
-
       }}
     >
       <Drawer.Screen name="Monday" component={Monday} />
@@ -46,7 +45,7 @@ export function DrawerNavigator() {
       <Drawer.Screen name="Friday" component={Friday} />
       <Drawer.Screen name="Saturday" component={Saturday} />
       <Drawer.Screen name="Sunday" component={Sunday} />
-      <Drawer.Screen name="< Back to Meals" component={Meals}/>
+      <Drawer.Screen name="< Back to Meals" component={Meals} />
     </Drawer.Navigator>
   );
 }
@@ -54,7 +53,7 @@ const MealPlan = () => {
   const navigation = useNavigation();
   const { updateMealPlanStatus } = useContext(AuthContext);
   const mealCtx = useContext(MealContext);
-
+  const dayCtx = useContext(DayContext);
   const navigateToMeals = async () => {
     await updateMealPlanStatus(true);
     navigation.navigate("Meals");
@@ -83,17 +82,7 @@ const MealPlan = () => {
     />
   );
 
-  const hasMeals = (
-    // <FlatList
-    //   data={mealsInPlan}
-    //   keyExtractor={(item) => item.id}
-    //   renderItem={renderCard}
-    //   numColumns={2}
-    //   columnWrapperStyle={styles.columnWrapper}
-    //   contentContainerStyle={styles.flatListContent}
-    // />
-    <DrawerNavigator />
-  );
+  const hasMeals = <DrawerNavigator />;
 
   const hasNoMeals = (
     <View style={styles.content}>

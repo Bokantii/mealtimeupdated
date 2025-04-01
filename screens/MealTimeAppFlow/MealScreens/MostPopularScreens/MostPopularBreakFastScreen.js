@@ -1,21 +1,43 @@
-import React,{useContext}from "react";
-import { View, StyleSheet,Alert } from "react-native";
+import React, { useContext } from "react";
+import { View, StyleSheet, Alert } from "react-native";
 import FlatListVertical from "../../../../components/ui/FlatListVertical";
 import { MOST_POPULAR_BREAKFAST } from "../../../../models/mealCategories/mostPopular/breakfastClass";
 import Card from "../../../../components/ui/Card";
 import { Colors } from "../../../../util/Colors";
 import { useState } from "react";
 import { MealContext } from "../../../../store/meals-context";
+import { DayContext } from "../../../../store/day-context";
 const MostPopularBreakFastScreen = ({ searchQuery }) => {
-  const mealCtx= useContext(MealContext);
+  const mealCtx = useContext(MealContext);
+  const dayCtx = useContext(DayContext);
   const addToMealPlan = (meal) => {
     Alert.alert(
-      `Great Choice! \u{1F44D} `,
-      "This meal has been added to your meal plan!"
+      "Add Meal to Day",
+      "Choose the day you want to add this meal to:",
+      [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday",
+      ].map((day) => {
+        return {
+          text: day,
+          onPress: () => {
+            // Capture meal correctly inside the closure
+            dayCtx.addMeal(day, "Breakfast", meal);
+            mealCtx.addToPlan(meal);
+            Alert.alert("✅ Added!", `Meal added to ${day} - Breakfast`);
+            console.log(`✅ Added to ${day}: ${meal?.title}`);
+          },
+        };
+      }),
+      { cancelable: true }
     );
-    mealCtx.addToPlan(meal);
-    console.log(`Added to meal plan!, MEAL IDS:${mealCtx.ids}`);
   };
+
   const renderCard = ({ item }) => {
     return (
       <Card
@@ -32,7 +54,8 @@ const MostPopularBreakFastScreen = ({ searchQuery }) => {
         mealCategory={item.mealCategory}
         description={item.description}
         tags
-        onPress={addToMealPlan}
+        onPress={() => addToMealPlan(item)}
+        addRemoveIcon="plus"
       />
     );
   };

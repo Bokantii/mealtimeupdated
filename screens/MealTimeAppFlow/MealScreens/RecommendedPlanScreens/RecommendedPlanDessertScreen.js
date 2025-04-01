@@ -5,14 +5,35 @@ import { RECOMMENDED_DESSERTS } from "../../../../models/mealCategories/recommen
 import Card from "../../../../components/ui/Card";
 import { Colors } from "../../../../util/Colors";
 import { MealContext } from "../../../../store/meals-context";
+import { DayContext } from "../../../../store/day-context";
 
 const RecommendedPlanDessertScreen = ({ searchQuery }) => {
   const mealCtx = useContext(MealContext);
+  const dayCtx = useContext(DayContext);
 
   const addToMealPlan = (meal) => {
-    Alert.alert("Sweet! 🍰", "Dessert added to your meal plan.");
-    mealCtx.addToPlan(meal);
-    console.log("Added to meal plan! MEAL IDS:", mealCtx.ids);
+    Alert.alert(
+      "Add to Day",
+      "Which day do you want to add this dessert to?",
+      [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday",
+      ].map((day) => ({
+        text: day,
+        onPress: () => {
+          dayCtx.addMeal(day, "Desserts", meal);
+          mealCtx.addToPlan(meal);
+          Alert.alert("🍰 Sweet!", `Dessert added to ${day}`);
+          console.log(`✅ ${meal.title} added to ${day} (Desserts)`);
+        },
+      })),
+      { cancelable: true }
+    );
   };
 
   const renderCard = ({ item }) => {
@@ -32,6 +53,7 @@ const RecommendedPlanDessertScreen = ({ searchQuery }) => {
         description={item.description}
         tags
         onPress={() => addToMealPlan(item)}
+        addRemoveIcon="plus"
       />
     );
   };

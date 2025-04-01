@@ -5,39 +5,56 @@ import FlatListVertical from "../../../../components/ui/FlatListVertical";
 import { MOST_POPULAR_DESSERTS } from "../../../../models/mealCategories/mostPopular/dessertClass";
 import { Colors } from "../../../../util/Colors";
 import { MealContext } from "../../../../store/meals-context";
+import { DayContext } from "../../../../store/day-context";
 
 const MostPopularDessertScreen = ({ searchQuery }) => {
   const mealCtx = useContext(MealContext);
+  const dayCtx = useContext(DayContext);
 
   const addToMealPlan = (meal) => {
     Alert.alert(
-      `Great Choice! \u{1F44D}`,
-      "This meal has been added to your meal plan!"
+      "Add Meal to Day",
+      "Choose the day you want to add this dessert to:",
+      [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday",
+      ].map((day) => ({
+        text: day,
+        onPress: () => {
+          dayCtx.addMeal(day, "Desserts", meal);
+          mealCtx.addToPlan(meal);
+          Alert.alert("✅ Added!", `Meal added to ${day} - Desserts`);
+          console.log(`✅ Added to ${day}: ${meal?.title}`);
+        },
+      })),
+      { cancelable: true }
     );
-    mealCtx.addToPlan(meal);
-    console.log(`Added to meal plan! MEAL IDS:`, mealCtx.ids);
   };
 
-  const renderCard = ({ item }) => {
-    return (
-      <Card
-        id={item.id}
-        title={item.title}
-        imgUrl={item.imgUrl}
-        duration={item.duration}
-        numOfServings={item.numOfServings}
-        ingredientsId={item.ingredientsId}
-        ingredientQtyId={item.ingredientQtyId}
-        cookware={item.cookware}
-        instructions={item.instructions}
-        isPro={item.isPro}
-        mealCategory={item.mealCategory}
-        description={item.description}
-        tags
-        onPress={() => addToMealPlan(item)}
-      />
-    );
-  };
+  const renderCard = ({ item }) => (
+    <Card
+      id={item.id}
+      title={item.title}
+      imgUrl={item.imgUrl}
+      duration={item.duration}
+      numOfServings={item.numOfServings}
+      ingredientsId={item.ingredientsId}
+      ingredientQtyId={item.ingredientQtyId}
+      cookware={item.cookware}
+      instructions={item.instructions}
+      isPro={item.isPro}
+      mealCategory={item.mealCategory}
+      description={item.description}
+      tags
+      onPress={() => addToMealPlan(item)}
+      addRemoveIcon="plus"
+    />
+  );
 
   return (
     <View style={styles.container}>

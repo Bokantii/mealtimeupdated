@@ -5,17 +5,35 @@ import FlatListVertical from "../../../../components/ui/FlatListVertical";
 import { MOST_POPULAR_DINNER } from "../../../../models/mealCategories/mostPopular/dinnerClass";
 import { Colors } from "../../../../util/Colors";
 import { MealContext } from "../../../../store/meals-context";
+import { DayContext } from "../../../../store/day-context"; // ✅ import DayContext
 
 const MostPopularDinnerScreen = ({ searchQuery }) => {
   const mealCtx = useContext(MealContext);
+  const dayCtx = useContext(DayContext); // ✅ use DayContext
 
   const addToMealPlan = (meal) => {
     Alert.alert(
-      `Great Choice! \u{1F44D}`,
-      "This meal has been added to your meal plan!"
+      "Add Meal to Day",
+      "Choose the day you want to add this dinner to:",
+      [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday",
+      ].map((day) => ({
+        text: day,
+        onPress: () => {
+          dayCtx.addMeal(day, "Dinner", meal); // ✅ Add to Dinner slot
+          mealCtx.addToPlan(meal);             // ✅ Optional general plan
+          Alert.alert("✅ Added!", `Meal added to ${day} - Dinner`);
+          console.log(`✅ Added to ${day}: ${meal?.title}`);
+        },
+      })),
+      { cancelable: true }
     );
-    mealCtx.addToPlan(meal);
-    console.log(`Added to meal plan! MEAL IDS:`, mealCtx.ids);
   };
 
   const renderCard = ({ item }) => {
@@ -35,6 +53,7 @@ const MostPopularDinnerScreen = ({ searchQuery }) => {
         description={item.description}
         tags
         onPress={() => addToMealPlan(item)}
+        addRemoveIcon="plus"
       />
     );
   };
