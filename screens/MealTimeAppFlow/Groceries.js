@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   View,
   Text,
@@ -10,31 +10,52 @@ import {
 } from "react-native";
 import { Colors } from "../../util/Colors";
 import AntDesign from "@expo/vector-icons/AntDesign";
-import stapleData from "../../data/stapleData";
 import { Ionicons } from "@expo/vector-icons";
+import { DayContext } from "../../store/day-context";
+import { StapleContext } from "../../store/staplesContext";
 const Groceries = ({ navigation }) => {
   const [warningVisible, setWarningVisible] = useState(true);
   const [checkedItems, setCheckedItems] = useState([]);
-
-  const toggleItem = (item) => {
-    if (checkedItems.includes(item)) {
-      setCheckedItems(checkedItems.filter((i) => i !== item));
+  const dayCtx = useContext(DayContext);
+  const stapleCtx = useContext(StapleContext);
+  const toggleItem = (itemName) => {
+    if (checkedItems.includes(itemName)) {
+      setCheckedItems(checkedItems.filter((i) => i !== itemName));
     } else {
-      setCheckedItems([...checkedItems, item]);
+      setCheckedItems([...checkedItems, itemName]);
     }
   };
 
-  function hideWarning() {
-    setWarningVisible(false);
-  }
+  const hideWarning = () => setWarningVisible(false);
+  const navigateToSearch = () => navigation.navigate("GrocerySearch");
+  const shopOnline = () => navigation.navigate("ShopOnline");
 
-  function navigateToSearch() {
-    navigation.navigate("GrocerySearch");
-  }
-  function shopOnline(){
-    navigation.navigate("ShopOnline")
-  }
-  const renderedStaples = stapleData.slice(0, 10);
+  const extractStaples = () => {
+    const allIngredients = stapleCtx.ids;
+
+    for (const day of Object.values(dayCtx.mealsByDay)) {
+      for (const mealType of Object.keys(day)) {
+        day[mealType].forEach((meal) => {
+          meal.ingredientsId.forEach((ingredient, index) => {
+            const quantity = meal.ingredientQtyId?.[index] || "";
+            allIngredients.push({ name: ingredient, quantity });
+          });
+        });
+      }
+    }
+
+    // Group by unique name
+    const grouped = {};
+    for (const item of allIngredients) {
+      if (!grouped[item.name]) {
+        grouped[item.name] = { ...item };
+      }
+    }
+
+    return Object.values(grouped);
+  };
+
+  const staples = extractStaples();
 
   return (
     <SafeAreaView style={styles.safeContainer}>
@@ -42,7 +63,12 @@ const Groceries = ({ navigation }) => {
       <View style={styles.headingContainer}>
         <Text style={styles.heading}>Groceries</Text>
         <TouchableOpacity onPress={navigateToSearch}>
-          <AntDesign name="plus" size={24} color="black" style={styles.plusIcon} />
+          <AntDesign
+            name="plus"
+            size={24}
+            color="black"
+            style={styles.plusIcon}
+          />
         </TouchableOpacity>
       </View>
 
@@ -51,8 +77,9 @@ const Groceries = ({ navigation }) => {
         <View style={styles.allergenWarning}>
           <Text style={styles.allergenWarningHeader}>Allergen Warning</Text>
           <Text style={styles.allergenWarningBody}>
-            Ingredients with a ⚠️ symbol may contain allergens. Tap an ingredient for more details, 
-            and make sure to purchase an allergen-free variety.
+            Ingredients with a ⚠️ symbol may contain allergens. Tap an
+            ingredient for more details, and make sure to purchase an
+            allergen-free variety.
           </Text>
           <TouchableOpacity onPress={hideWarning}>
             <View style={styles.gotIt}>
@@ -65,26 +92,53 @@ const Groceries = ({ navigation }) => {
       {/* Grocery List */}
       <View>
         <Text style={styles.sectionTitle}>Produce</Text>
-        <FlatList
-          data={renderedStaples}
-          keyExtractor={(item, index) => index.toString().toLowerCase()}
-          renderItem={({ item }) => {
-            const isChecked = checkedItems.includes(item.staple);
-            return (
-              <View style={styles.listItem}>
-                {/* Checkbox */}
-                <TouchableOpacity onPress={() => toggleItem(item.staple)} style={[styles.checkbox, isChecked && styles.checkedBox]}>
-                  {isChecked && <Ionicons name="checkmark" size={18} color="white" />}
-                </TouchableOpacity>
-              
-                {/* Item Text */}
-                <Text style={[styles.itemText, isChecked && styles.strikethrough]}>
-                  {item.staple}
-                </Text>
-              </View>
-            );
-          }}
-        />
+
+        {staples.length < 1 ? (
+          <Text style={styles.emptyText}>No ingredients added yet.</Text>
+        ) : (
+          <FlatList
+            data={staples}
+            keyExtractor={(item, index) => `${item.name}-${index}`}
+            renderItem={({ item }) => {
+              const isChecked = checkedItems.includes(item.name);
+              return (
+                <View style={styles.listItem}>
+                  {/* Checkbox */}
+                  <TouchableOpacity
+                    onPress={() => toggleItem(item.name)}
+                    style={[styles.checkbox, isChecked && styles.checkedBox]}
+                  >
+                    {isChecked && (
+                      <Ionicons name="checkmark" size={18} color="white" />
+                    )}
+                  </TouchableOpacity>
+
+                  {/* Item Text with Quantity */}
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      width: "90%",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Text
+                      style={[
+                        styles.itemText,
+                        isChecked && styles.strikethrough,
+                      ]}
+                    >
+                      {item.name}
+                    </Text>
+                    <Text style={{ color: "#666666" }}>
+                      {item.quantity && `(${item.quantity})`}
+                    </Text>
+                  </View>
+                </View>
+              );
+            }}
+          />
+        )}
       </View>
 
       {/* Shop Online Button */}
@@ -166,32 +220,33 @@ const styles = StyleSheet.create({
   checkbox: {
     width: 22,
     height: 22,
-    borderRadius: 4, // Slight rounding like in screenshot
+    borderRadius: 4,
     borderWidth: 2,
-    borderColor: "#A1A1A1", // Light gray border for unselected
+    borderColor: "#A1A1A1",
     backgroundColor: "#FFFFFF",
     marginRight: 12,
     justifyContent: "center",
     alignItems: "center",
   },
   checkedBox: {
-    borderColor: "#F58700", // Orange border when checked
+    borderColor: "#F58700",
     backgroundColor: "#F58700",
-  },
-  innerCheck: {
-    width: 12,
-    height: 12,
-    borderRadius: 2, // Small rounded corners inside
-    backgroundColor: "#FFFFFF",
   },
   itemText: {
     fontSize: 16,
     fontWeight: "600",
     color: "black",
+    textTransform:"lowercase"
   },
   strikethrough: {
     textDecorationLine: "line-through",
-    color: "#A1A1A1", // Dimmed gray when checked
+    color: "#A1A1A1",
+  },
+  emptyText: {
+    textAlign: "center",
+    marginTop: 50,
+    color: "#999999",
+    fontSize: 16,
   },
   shopOnline: {
     flexDirection: "row",

@@ -63,6 +63,15 @@ const MealPlan = () => {
     .map((id) => ALL_MEALS.find((meal) => meal.id === id))
     .filter(Boolean); // remove nulls if any ID isn't found
 
+  const isDayPlanEmpty = () => {
+    const allDays = Object.values(dayCtx.mealsByDay);
+    for (const day of allDays) {
+      for (const mealType in day) {
+        if (day[mealType].length > 0) return false;
+      }
+    }
+    return true;
+  };
   const renderCard = ({ item }) => (
     <Card
       id={item.id}
@@ -99,7 +108,7 @@ const MealPlan = () => {
 
   return (
     <View style={styles.container}>
-      {mealCtx.ids.length > 0 ? hasMeals : hasNoMeals}
+      {isDayPlanEmpty() ? hasNoMeals : hasMeals}
     </View>
   );
 };

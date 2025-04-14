@@ -9,18 +9,18 @@ import {
   FlatList,
   TouchableOpacity,
 } from "react-native";
-import React, { useState } from "react";
-import { StaplesContext } from "../../store/staplesContext";
+import React, { useState, useContext } from "react";
+import { StapleContext } from "../../store/staplesContext";
 import stapleData from "../../data/stapleData";
 import { Colors } from "../../util/Colors";
 import { AntDesign } from "@expo/vector-icons";
 
-const GrocerySearch = ({navigation}) => {
+const GrocerySearch = ({ navigation }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const filteredStaples = stapleData.filter((item) =>
     item.staple.toLowerCase().includes(searchQuery.toLowerCase())
   );
- 
+  const stapleCtx = useContext(StapleContext);
   return (
     <SafeAreaView style={styles.safeContainer}>
       <View style={styles.container}>
@@ -35,7 +35,7 @@ const GrocerySearch = ({navigation}) => {
             onChangeText={setSearchQuery}
           />
         </View>
-        <View style={{paddingVertical:40}}>
+        <View style={{ paddingVertical: 40 }}>
           <FlatList
             data={filteredStaples}
             keyExtractor={(item, index) => index.toString().toLowerCase()}
@@ -51,7 +51,12 @@ const GrocerySearch = ({navigation}) => {
                 }}
               >
                 <TouchableOpacity>
-                  <AntDesign name="plus" size={24} color="#666666" />
+                  <AntDesign
+                    name="plus"
+                    size={24}
+                    color="#666666"
+                    onPress={()=>stapleCtx.addStaple({name:item.staple,quantity:"1"})}
+                  />
                 </TouchableOpacity>
                 <Text
                   style={{

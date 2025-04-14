@@ -1,39 +1,30 @@
-import React, { useContext } from "react";
-import { View, StyleSheet, Alert } from "react-native";
+import React, { useContext, useState } from "react";
+import { View, StyleSheet } from "react-native";
 import FlatListVertical from "../../../../components/ui/FlatListVertical";
 import { RECOMMENDED_PLAN_BREAKFAST } from "../../../../models/mealCategories/recommendedPlan/breakfastClass";
 import Card from "../../../../components/ui/Card";
 import { Colors } from "../../../../util/Colors";
 import { MealContext } from "../../../../store/meals-context";
 import { DayContext } from "../../../../store/day-context";
+import CustomDayPickerModal from "../../../../components/ui/CustomDayPickerModal";
 
 const RecommendedPlanBreakFastScreen = ({ searchQuery }) => {
   const mealCtx = useContext(MealContext);
   const dayCtx = useContext(DayContext);
 
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [selectedMeal, setSelectedMeal] = useState(null);
+
   const addToMealPlan = (meal) => {
-    Alert.alert(
-      "Add to Day",
-      "Which day do you want to add this meal to?",
-      [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-        "Sunday",
-      ].map((day) => ({
-        text: day,
-        onPress: () => {
-          dayCtx.addMeal(day, "Breakfast", meal);
-          mealCtx.addToPlan(meal);
-          Alert.alert("✅ Added!", `Breakfast added to ${day}`);
-          console.log(`✅ ${meal.title} added to ${day} (Breakfast)`);
-        },
-      })),
-      { cancelable: true }
-    );
+    setSelectedMeal(meal);
+    setIsModalVisible(true);
+  };
+
+  const handleDaySelect = (day) => {
+    dayCtx.addMeal(day, "Breakfast", selectedMeal);
+    mealCtx.addToPlan(selectedMeal);
+    setIsModalVisible(false);
+    setSelectedMeal(null);
   };
 
   const renderCard = ({ item }) => (
@@ -66,6 +57,13 @@ const RecommendedPlanBreakFastScreen = ({ searchQuery }) => {
         title={"Recommended Plan"}
         numColumns={2}
         searchQuery={searchQuery}
+      />
+
+      <CustomDayPickerModal
+        visible={isModalVisible}
+        onClose={() => setIsModalVisible(false)}
+        onSelectDay={handleDaySelect}
+        meal={selectedMeal}
       />
     </View>
   );

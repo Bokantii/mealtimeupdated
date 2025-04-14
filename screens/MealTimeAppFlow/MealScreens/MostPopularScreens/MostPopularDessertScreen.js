@@ -1,39 +1,30 @@
-import React, { useContext } from "react";
-import { View, StyleSheet, Alert } from "react-native";
-import Card from "../../../../components/ui/Card";
+import React, { useContext, useState } from "react";
+import { View, StyleSheet, TextInput, Text } from "react-native";
 import FlatListVertical from "../../../../components/ui/FlatListVertical";
 import { MOST_POPULAR_DESSERTS } from "../../../../models/mealCategories/mostPopular/dessertClass";
+import Card from "../../../../components/ui/Card";
 import { Colors } from "../../../../util/Colors";
 import { MealContext } from "../../../../store/meals-context";
 import { DayContext } from "../../../../store/day-context";
+import CustomDayPickerModal from "../../../../components/ui/CustomDayPickerModal";
 
 const MostPopularDessertScreen = ({ searchQuery }) => {
   const mealCtx = useContext(MealContext);
   const dayCtx = useContext(DayContext);
 
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [selectedMeal, setSelectedMeal] = useState(null);
+
+  const handleDaySelect = (day) => {
+    dayCtx.addMeal(day, "Desserts", selectedMeal);
+    mealCtx.addToPlan(selectedMeal);
+    setIsModalVisible(false);
+    setSelectedMeal(null);
+  };
+
   const addToMealPlan = (meal) => {
-    Alert.alert(
-      "Add Meal to Day",
-      "Choose the day you want to add this dessert to:",
-      [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-        "Sunday",
-      ].map((day) => ({
-        text: day,
-        onPress: () => {
-          dayCtx.addMeal(day, "Desserts", meal);
-          mealCtx.addToPlan(meal);
-          Alert.alert("✅ Added!", `Meal added to ${day} - Desserts`);
-          console.log(`✅ Added to ${day}: ${meal?.title}`);
-        },
-      })),
-      { cancelable: true }
-    );
+    setSelectedMeal(meal);
+    setIsModalVisible(true);
   };
 
   const renderCard = ({ item }) => (
@@ -66,6 +57,13 @@ const MostPopularDessertScreen = ({ searchQuery }) => {
         title={"Most Popular"}
         numColumns={2}
         searchQuery={searchQuery}
+      />
+
+      <CustomDayPickerModal
+        visible={isModalVisible}
+        onClose={() => setIsModalVisible(false)}
+        onSelectDay={handleDaySelect}
+        meal={selectedMeal}
       />
     </View>
   );

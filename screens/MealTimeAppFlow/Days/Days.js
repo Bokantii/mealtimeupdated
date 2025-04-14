@@ -6,19 +6,20 @@ import {
   TouchableOpacity,
   StatusBar,
 } from "react-native";
-import React from "react";
+import React, { useContext } from "react";
 import { Colors } from "../../../util/Colors";
 import Card from "../../../components/ui/Card";
 import Entypo from "@expo/vector-icons/Entypo";
 import { useNavigation } from "@react-navigation/native";
-
+import { DayContext } from "../../../store/day-context";
 const Day = ({ day, mealContainers }) => {
   const navigation = useNavigation();
   const openDrawer = () => {
     navigation.openDrawer();
     console.log("Navigating to drawer...");
   };
-
+  const dayCtx = useContext(DayContext);
+  
   const renderMealSection = ({ item }) => (
     <View style={styles.mealContainer}>
       <Text style={styles.mealTime}>{item.title}:</Text>
@@ -41,6 +42,7 @@ const Day = ({ day, mealContainers }) => {
             description={meal.description}
             tags={meal.tags}
             addRemoveIcon="minus"
+            onPress={()=>dayCtx.removeMeal(day,item.title,meal.id)}
           />
         )}
       />
