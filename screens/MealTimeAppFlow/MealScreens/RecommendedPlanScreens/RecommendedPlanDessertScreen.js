@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { View, StyleSheet } from "react-native";
 import FlatListVertical from "../../../../components/ui/FlatListVertical";
-import { RECOMMENDED_DESSERTS } from "../../../../models/mealCategories/recommendedPlan/dessertClass";
+import { ALL_MEALS } from "../../../../data/ALLMEALS";
 import Card from "../../../../components/ui/Card";
 import { Colors } from "../../../../util/Colors";
 import { MealContext } from "../../../../store/meals-context";
@@ -11,9 +11,10 @@ import CustomDayPickerModal from "../../../../components/ui/CustomDayPickerModal
 const RecommendedPlanDessertScreen = ({ searchQuery }) => {
   const mealCtx = useContext(MealContext);
   const dayCtx = useContext(DayContext);
-
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedMeal, setSelectedMeal] = useState(null);
+
+  const recommendedDessertMeals = ALL_MEALS.filter(meal => meal.id.startsWith("rec-dessert-"));
 
   const addToMealPlan = (meal) => {
     setSelectedMeal(meal);
@@ -50,7 +51,7 @@ const RecommendedPlanDessertScreen = ({ searchQuery }) => {
   return (
     <View style={styles.container}>
       <FlatListVertical
-        data={RECOMMENDED_DESSERTS}
+        data={recommendedDessertMeals}
         keyExtractor={(item) => item.id}
         horizontal={false}
         renderItem={renderCard}

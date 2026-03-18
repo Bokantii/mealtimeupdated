@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
-import { View, StyleSheet, TextInput, Text } from "react-native";
+import { View, StyleSheet } from "react-native";
 import FlatListVertical from "../../../../components/ui/FlatListVertical";
-import { MOST_POPULAR_DESSERTS } from "../../../../models/mealCategories/mostPopular/dessertClass";
+import { ALL_MEALS } from "../../../../data/ALLMEALS";
 import Card from "../../../../components/ui/Card";
 import { Colors } from "../../../../util/Colors";
 import { MealContext } from "../../../../store/meals-context";
@@ -11,9 +11,10 @@ import CustomDayPickerModal from "../../../../components/ui/CustomDayPickerModal
 const MostPopularDessertScreen = ({ searchQuery }) => {
   const mealCtx = useContext(MealContext);
   const dayCtx = useContext(DayContext);
-
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedMeal, setSelectedMeal] = useState(null);
+
+  const dessertMeals = ALL_MEALS.filter(meal => meal.id.startsWith("dessert-"));
 
   const handleDaySelect = (day) => {
     dayCtx.addMeal(day, "Desserts", selectedMeal);
@@ -50,7 +51,7 @@ const MostPopularDessertScreen = ({ searchQuery }) => {
   return (
     <View style={styles.container}>
       <FlatListVertical
-        data={MOST_POPULAR_DESSERTS}
+        data={dessertMeals}
         keyExtractor={(item) => item.id}
         horizontal={false}
         renderItem={renderCard}

@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
 import { View, StyleSheet } from "react-native";
 import FlatListVertical from "../../../../components/ui/FlatListVertical";
+import { ALL_MEALS } from "../../../../data/ALLMEALS";
 import Card from "../../../../components/ui/Card";
 import { Colors } from "../../../../util/Colors";
-import { RECENTLY_CREATED_DINNER } from "../../../../models/mealCategories/recentlyCreated/dinnerClass";
 import { MealContext } from "../../../../store/meals-context";
 import { DayContext } from "../../../../store/day-context";
 import CustomDayPickerModal from "../../../../components/ui/CustomDayPickerModal";
@@ -11,9 +11,10 @@ import CustomDayPickerModal from "../../../../components/ui/CustomDayPickerModal
 const RecentlyCreatedDinnerScreen = ({ searchQuery }) => {
   const mealCtx = useContext(MealContext);
   const dayCtx = useContext(DayContext);
-
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedMeal, setSelectedMeal] = useState(null);
+
+  const recentDinnerMeals = ALL_MEALS.filter(meal => meal.id.startsWith("rc-dinner-"));
 
   const addToMealPlan = (meal) => {
     setSelectedMeal(meal);
@@ -50,7 +51,7 @@ const RecentlyCreatedDinnerScreen = ({ searchQuery }) => {
   return (
     <View style={styles.container}>
       <FlatListVertical
-        data={RECENTLY_CREATED_DINNER}
+        data={recentDinnerMeals}
         keyExtractor={(item) => item.id}
         horizontal={false}
         renderItem={renderCard}

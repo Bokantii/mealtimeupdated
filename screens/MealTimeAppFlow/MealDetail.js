@@ -129,31 +129,32 @@ const InstructionScreen = ({ route }) => {
 const Tab = createMaterialTopTabNavigator();
 //Meal Detail Component
 const MealDetail = ({ route, navigation }) => {
-  const [bookmark, setBookMark] = useState(false);
+  // const [bookmark, setBookMark] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const favoriteCtx = useContext(FavouriteContext);
-  useEffect(() => {
-    if (mealId) {
-      renderBookMark(mealId);
-    }
-  }, [mealId]);
+  // useEffect(() => {
+  //   if (mealId) {
+  //     renderBookMark(mealId);
+  //   }
+  // }, [mealId]);
 
   const mealId = route?.params?.id;
+  console.log("MealDetail received mealId:", mealId);
   if (!mealId) {
     console.error("Meal ID is undefined. Check Navigation Paramseters");
     return null;
   }
   const ALLMEALS = ALL_MEALS.find((meal) => meal.id === mealId);
-  const isFavorite = favoriteCtx.ids.includes(mealId);
+  const isFavorite = favoriteCtx.ids.includes(String(mealId));
   function changeFavoriteStatusHandler() {
     console.log("Meal ID:" + mealId);
     console.log("Is Favorite Before Change:", isFavorite);
     console.log("New Favorite Added!");
     if (isFavorite) {
-      favoriteCtx.removeFavorite(mealId);
+      favoriteCtx.removeFavorite(String(mealId));
     } else {
-      favoriteCtx.addFavorite(mealId);
+      favoriteCtx.addFavorite(String(mealId));
     }
 
     console.log("Favorite IDs After Change:", favoriteCtx.ids);
@@ -162,53 +163,53 @@ const MealDetail = ({ route, navigation }) => {
     setModalVisible(true);
     console.log("Modal Menu Opened");
   }
-  async function addBookmark(ItemId) {
-    try {
-      const token = await AsyncStorage.getItem("bookmark");
-      let bookmarks = token ? JSON.parse(token) : [];
-      if (!bookmarks.includes(ItemId)) {
-        bookmarks.push(ItemId);
-        await AsyncStorage.setItem("bookmark", JSON.stringify(bookmarks));
-        Alert.alert(
-          `Great Choice! \u{1F44D}`,
-          "This meal has been added to your favorites!"
-        );
-        setBookMark(true);
-      } else {
-        console.log("Meal is already bookmarked:", ItemId);
-      }
-    } catch (error) {
-      console.error("Error adding bookmark:", error);
-    }
-  }
+  // async function addBookmark(ItemId) {
+  //   try {
+  //     const token = await AsyncStorage.getItem("bookmark");
+  //     let bookmarks = token ? JSON.parse(token) : [];
+  //     if (!bookmarks.includes(ItemId)) {
+  //       bookmarks.push(ItemId);
+  //       await AsyncStorage.setItem("bookmark", JSON.stringify(bookmarks));
+  //       Alert.alert(
+  //         `Great Choice! \u{1F44D}`,
+  //         "This meal has been added to your favorites!",
+  //       );
+  //       setBookMark(true);
+  //     } else {
+  //       console.log("Meal is already bookmarked:", ItemId);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error adding bookmark:", error);
+  //   }
+  // }
 
-  async function removeBookmark(ItemId) {
-    try {
-      const token = await AsyncStorage.getItem("bookmark");
-      let bookmarks = token ? JSON.parse(token) : [];
-      bookmarks = bookmarks.filter((id) => id !== ItemId); // Remove the item
-      await AsyncStorage.setItem("bookmark", JSON.stringify(bookmarks));
-      Alert.alert(
-        `Meal Removed`,
-        "This meal has been removed from your favorites."
-      );
-      setBookMark(false); // Update state
-    } catch (error) {
-      console.error("Error removing bookmark:", error);
-    }
-  }
+  // async function removeBookmark(ItemId) {
+  //   try {
+  //     const token = await AsyncStorage.getItem("bookmark");
+  //     let bookmarks = token ? JSON.parse(token) : [];
+  //     bookmarks = bookmarks.filter((id) => id !== ItemId); // Remove the item
+  //     await AsyncStorage.setItem("bookmark", JSON.stringify(bookmarks));
+  //     Alert.alert(
+  //       `Meal Removed`,
+  //       "This meal has been removed from your favorites.",
+  //     );
+  //     setBookMark(false); // Update state
+  //   } catch (error) {
+  //     console.error("Error removing bookmark:", error);
+  //   }
+  // }
 
-  async function renderBookMark(ItemId) {
-    try {
-      const token = await AsyncStorage.getItem("bookmark");
-      const bookmarks = token ? JSON.parse(token) : [];
-      const isBookmarked = bookmarks.includes(ItemId);
-      console.log(`Meal ${ItemId} is bookmarked:`, isBookmarked);
-      setBookMark(isBookmarked);
-    } catch (error) {
-      console.error("Error rendering bookmark:", error);
-    }
-  }
+  // async function renderBookMark(ItemId) {
+  //   try {
+  //     const token = await AsyncStorage.getItem("bookmark");
+  //     const bookmarks = token ? JSON.parse(token) : [];
+  //     const isBookmarked = bookmarks.includes(ItemId);
+  //     console.log(`Meal ${ItemId} is bookmarked:`, isBookmarked);
+  //     setBookMark(isBookmarked);
+  //   } catch (error) {
+  //     console.error("Error rendering bookmark:", error);
+  //   }
+  // }
 
   const {
     id,
@@ -231,7 +232,7 @@ const MealDetail = ({ route, navigation }) => {
   function goBack() {
     navigation.goBack();
   }
- 
+
   function startCooking() {
     console.log("Started Cooking");
     navigation.navigate("CookingInstructionScreen", {
@@ -241,7 +242,7 @@ const MealDetail = ({ route, navigation }) => {
     });
     console.log(
       "numberOfInstructions before navigating:",
-      numberOfInstructions
+      numberOfInstructions,
     );
     setModalVisible(false);
   }
@@ -275,7 +276,7 @@ const MealDetail = ({ route, navigation }) => {
       Servings: ${numOfServings}
       
       Try it out!`;
-  
+
       await Share.share({ message });
     } catch (error) {
       Alert.alert("Error", "Something went wrong while sharing.");
@@ -319,7 +320,15 @@ const MealDetail = ({ route, navigation }) => {
       <View style={styles.content}>
         <View style={styles.content_header}>
           <Text style={styles.title}>{title}</Text>
-          <Pressable
+          {/* // Replace the bookmark Pressable with: */}
+          <Pressable onPress={changeFavoriteStatusHandler}>
+            <MaterialIcons
+              name={isFavorite ? "favorite" : "favorite-outline"}
+              size={24}
+              color={isFavorite ? Colors.mealTimePrimary : "black"}
+            />
+          </Pressable>
+          {/* <Pressable
             onPress={() => {
               bookmark ? removeBookmark(mealId) : addBookmark(mealId);
             }}
@@ -329,7 +338,7 @@ const MealDetail = ({ route, navigation }) => {
               size={24}
               color={bookmark ? Colors.mealTimePrimary : "black"}
             />
-          </Pressable>
+          </Pressable> */}
         </View>
         <View style={styles.meal_info}>
           <Text style={styles.duration}>{duration} minutes-</Text>

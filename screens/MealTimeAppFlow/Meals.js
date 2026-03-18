@@ -22,10 +22,7 @@ import { Colors } from "../../util/Colors";
 import { AuthContext } from "../../store/authContext";
 import { MealContext } from "../../store/meals-context";
 import { DayContext } from "../../store/day-context";
-
-import { MOST_POPULAR_BREAKFAST } from "../../models/mealCategories/mostPopular/breakfastClass";
-import { RECENTLY_CREATED_BREAKFAST } from "../../models/mealCategories/recentlyCreated/breakfastClass";
-import { RECOMMENDED_PLAN_BREAKFAST } from "../../models/mealCategories/recommendedPlan/breakfastClass";
+import { ALL_MEALS } from "../../data/ALLMEALS";
 
 const Meals = () => {
   const navigation = useNavigation();
@@ -41,6 +38,10 @@ const Meals = () => {
 
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const translateY = useRef(new Animated.Value(50)).current;
+
+  const mostPopularBreakfast = ALL_MEALS.filter(meal => meal.id.startsWith("breakfast-"));
+  const recentlyCreatedBreakfast = ALL_MEALS.filter(meal => meal.id.startsWith("rc-breakfast-"));
+  const recommendedBreakfast = ALL_MEALS.filter(meal => meal.id.startsWith("rec-breakfast-"));
 
   const toggleSearch = () => setShowSearch((prev) => !prev);
   const hidePopover = () => setIsPopoverVisible(false);
@@ -125,9 +126,9 @@ const Meals = () => {
           title1="Most Popular"
           title2="Recently Created"
           title3="Recommended Plan"
-          data1={MOST_POPULAR_BREAKFAST}
-          data2={RECENTLY_CREATED_BREAKFAST}
-          data3={RECOMMENDED_PLAN_BREAKFAST}
+          data1={mostPopularBreakfast}
+          data2={recentlyCreatedBreakfast}
+          data3={recommendedBreakfast}
           renderItem={renderCard}
           keyExtractor={(item) => item.id}
           horizontal

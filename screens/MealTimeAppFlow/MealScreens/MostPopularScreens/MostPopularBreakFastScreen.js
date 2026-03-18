@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { View, StyleSheet } from "react-native";
 import FlatListVertical from "../../../../components/ui/FlatListVertical";
-import { MOST_POPULAR_BREAKFAST } from "../../../../models/mealCategories/mostPopular/breakfastClass";
+import { ALL_MEALS } from "../../../../data/ALLMEALS";
 import Card from "../../../../components/ui/Card";
 import { Colors } from "../../../../util/Colors";
 import { MealContext } from "../../../../store/meals-context";
@@ -13,6 +13,7 @@ const MostPopularBreakFastScreen = ({ searchQuery }) => {
   const dayCtx = useContext(DayContext);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedMeal, setSelectedMeal] = useState(null);
+  const breakfastMeals = ALL_MEALS.filter(meal => meal.mealCategory === "Breakfast" && meal.id.startsWith("breakfast-"));
 
   const addToMealPlan = (meal) => {
     setSelectedMeal(meal);
@@ -49,7 +50,7 @@ const MostPopularBreakFastScreen = ({ searchQuery }) => {
   return (
     <View style={styles.container}>
       <FlatListVertical
-        data={MOST_POPULAR_BREAKFAST}
+        data={breakfastMeals}
         keyExtractor={(item) => item.id}
         horizontal={false}
         renderItem={renderCard}

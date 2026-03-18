@@ -18,10 +18,11 @@ const FavoritesScreen = ({ navigation }) => {
   const [bookmarkItem, setBookmarkItem] = useState([]); // Initialize as an empty array
   const [isLoading, setIsLoading] = useState(true); // Ensure loading is true initially
   const favoriteCtx = useContext(FavouriteContext);
-
+  console.log("FavoritesScreen - favoriteCtx.ids:", favoriteCtx.ids);
+  console.log("FavoritesScreen - favoriteMeals:", favoriteMeals);
   // Filter favorite meals from ALL_MEALS
   const favoriteMeals = ALL_MEALS.filter((meal) =>
-    favoriteCtx.ids.includes(meal.id)
+    favoriteCtx.ids.includes(String(meal.id)),
   );
 
   // Navigate to MealDetail screen
@@ -62,32 +63,33 @@ const FavoritesScreen = ({ navigation }) => {
   };
 
   // Fetch Bookmark
-  const fetchBookmark = async () => {
-    try {
-      setIsLoading(true);
-      const token = await AsyncStorage.getItem("bookmark");
-      const res = JSON.parse(token);
-      if (res && res.length > 0) {
-        const items = res
-          .map((id) => ALL_MEALS.find((meal) => meal.id === id))
-          .filter(Boolean); // Filter valid matches
-        console.log("Bookmark items loaded:", items);
-        setBookmarkItem(items);
-      } else {
-        console.log("No bookmarks found");
-        setBookmarkItem([]); // No bookmarks
-      }
-    } catch (error) {
-      console.error("Error fetching bookmarks:", error);
-      setBookmarkItem([]);
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
-  useEffect(() => {
-    fetchBookmark();
-  }, []);
+  // const fetchBookmark = async () => {
+  //   try {
+  //     setIsLoading(true);
+  //     const token = await AsyncStorage.getItem("bookmark");
+  //     const res = JSON.parse(token);
+  //     if (res && res.length > 0) {
+  //       const items = res
+  //         .map((id) => ALL_MEALS.find((meal) => meal.id === id))
+  //         .filter(Boolean); // Filter valid matches
+  //       console.log("Bookmark items loaded:", items);
+  //       setBookmarkItem(items);
+  //     } else {
+  //       console.log("No bookmarks found");
+  //       setBookmarkItem([]); // No bookmarks
+  //     }
+  //   } catch (error) {
+  //     console.error("Error fetching bookmarks:", error);
+  //     setBookmarkItem([]);
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   fetchBookmark();
+  // }, []);
 
   return (
     <SafeAreaView style={styles.safeContainer}>
@@ -96,8 +98,8 @@ const FavoritesScreen = ({ navigation }) => {
 
         {favoriteCtx.ids.length > 0 ? (
           <FlatList
-            data={favoriteCtx.ids}
-            keyExtractor={(item) => item.id}
+            data={favoriteMeals}
+            keyExtractor={(meal) => meal.id}
             renderItem={renderMealItem}
           />
         ) : (
